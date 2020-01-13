@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:00.SwiftTest/00.SwiftTest.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:01.OCTest/01.OCTest.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:01.SwiftTest/01.SwiftTest.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:01.TableViewCellStyle/01.TableViewCellStyle.xcodeproj">
    </FileRef>
 </Workspace>
