@@ -13,4 +13,7 @@
    <FileRef
       location = "group:01.TableViewCellStyle/01.TableViewCellStyle.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:02.GCD/02.GCD.xcodeproj">
+   </FileRef>
 </Workspace>
