@@ -8,18 +8,17 @@
 
 #import "ViewController.h"
 #import "MOGCD.h"
+#import "MOOperationQueue.h"
+#import "MONSThread.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
-
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [MOGCD shareInstance];
-
+//  [MOGCD shareInstance];
+//  [MOOperationQueue shareInstance];
+  [MONSThread shareInstance];
 }
-
-
 @end
