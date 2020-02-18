@@ -16,4 +16,7 @@
    <FileRef
       location = "group:02.&#x591a;&#x7ebf;&#x7a0b;/02.&#x591a;&#x7ebf;&#x7a0b;.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:03.WKWebView/03.WKWebView.xcodeproj">
+   </FileRef>
 </Workspace>
