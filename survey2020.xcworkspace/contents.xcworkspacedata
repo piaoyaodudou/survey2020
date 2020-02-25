@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:04.Runtime/04.Runtime.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:00.SwiftTest/00.SwiftTest.xcodeproj">
    </FileRef>
    <FileRef
@@ -21,5 +18,8 @@
    </FileRef>
    <FileRef
       location = "group:03.WKWebView/03.WKWebView.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:04.Runtime/04.Runtime.xcodeproj">
    </FileRef>
 </Workspace>

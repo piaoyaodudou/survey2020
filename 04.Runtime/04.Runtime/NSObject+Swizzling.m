@@ -15,9 +15,16 @@
   Method originalMethod = class_getInstanceMethod(class, originalSelector);
   // 新方法
   Method swizzledMetod = class_getInstanceMethod(class, swizzledSelector);
-  BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMetod), method_getTypeEncoding(swizzledMetod));
-  if (didAddMethod) {
-    class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+  // 尝试添加`origin`方法
+  BOOL didAddMethod = class_addMethod(class,
+                                      originalSelector,
+                                      method_getImplementation(swizzledMetod),
+                                      method_getTypeEncoding(swizzledMetod));
+  if (didAddMethod) { // 之前没有实现`origin`方法
+    class_replaceMethod(class,
+                        swizzledSelector,
+                        method_getImplementation(originalMethod),
+                        method_getTypeEncoding(originalMethod));
   } else {
     method_exchangeImplementations(originalMethod, swizzledMetod);
   }

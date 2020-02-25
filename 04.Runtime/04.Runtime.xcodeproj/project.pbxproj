@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		825CE4272403C8F000718272 /* UIViewController+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE4262403C8F000718272 /* UIViewController+Swizzling.m */; };
+		825CE42A2403CA8E00718272 /* NSMutableArray+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE4292403CA8E00718272 /* NSMutableArray+Swizzling.m */; };
+		825CE42D2403D25D00718272 /* UIButton+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE42C2403D25D00718272 /* UIButton+Swizzling.m */; };
+		825CE4332403DCD700718272 /* UILabel+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE4322403DCD700718272 /* UILabel+Swizzling.m */; };
+		825CE4362403DE1A00718272 /* UINavigationItem+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE4352403DE1A00718272 /* UINavigationItem+Swizzling.m */; };
+		825CE43A2403E0E400718272 /* UITableView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE4392403E0E400718272 /* UITableView+Placeholder.m */; };
+		825CE43D2403E12F00718272 /* MOPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825CE43C2403E12F00718272 /* MOPlaceholderView.m */; };
 		E08B0C2E240244A100A974A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E08B0C2D240244A100A974A4 /* AppDelegate.m */; };
 		E08B0C31240244A100A974A4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E08B0C30240244A100A974A4 /* SceneDelegate.m */; };
 		E08B0C34240244A100A974A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08B0C33240244A100A974A4 /* ViewController.m */; };
@@ -37,6 +44,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		825CE4252403C8F000718272 /* UIViewController+Swizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Swizzling.h"; sourceTree = "<group>"; };
+		825CE4262403C8F000718272 /* UIViewController+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Swizzling.m"; sourceTree = "<group>"; };
+		825CE4282403CA8E00718272 /* NSMutableArray+Swizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Swizzling.h"; sourceTree = "<group>"; };
+		825CE4292403CA8E00718272 /* NSMutableArray+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Swizzling.m"; sourceTree = "<group>"; };
+		825CE42B2403D25D00718272 /* UIButton+Swizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Swizzling.h"; sourceTree = "<group>"; };
+		825CE42C2403D25D00718272 /* UIButton+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Swizzling.m"; sourceTree = "<group>"; };
+		825CE4312403DCD700718272 /* UILabel+Swizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Swizzling.h"; sourceTree = "<group>"; };
+		825CE4322403DCD700718272 /* UILabel+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Swizzling.m"; sourceTree = "<group>"; };
+		825CE4342403DE1A00718272 /* UINavigationItem+Swizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Swizzling.h"; sourceTree = "<group>"; };
+		825CE4352403DE1A00718272 /* UINavigationItem+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Swizzling.m"; sourceTree = "<group>"; };
+		825CE4382403E0E400718272 /* UITableView+Placeholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+Placeholder.h"; sourceTree = "<group>"; };
+		825CE4392403E0E400718272 /* UITableView+Placeholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Placeholder.m"; sourceTree = "<group>"; };
+		825CE43B2403E12F00718272 /* MOPlaceholderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOPlaceholderView.h; sourceTree = "<group>"; };
+		825CE43C2403E12F00718272 /* MOPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOPlaceholderView.m; sourceTree = "<group>"; };
 		E08B0C29240244A100A974A4 /* 04.Runtime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 04.Runtime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08B0C2C240244A100A974A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E08B0C2D240244A100A974A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +105,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		825CE4372403E0AC00718272 /* ScrollViewPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				825CE4382403E0E400718272 /* UITableView+Placeholder.h */,
+				825CE4392403E0E400718272 /* UITableView+Placeholder.m */,
+				825CE43B2403E12F00718272 /* MOPlaceholderView.h */,
+				825CE43C2403E12F00718272 /* MOPlaceholderView.m */,
+			);
+			path = ScrollViewPlaceholder;
+			sourceTree = "<group>";
+		};
 		E08B0C20240244A100A974A4 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +139,7 @@
 		E08B0C2B240244A100A974A4 /* 04.Runtime */ = {
 			isa = PBXGroup;
 			children = (
+				825CE4372403E0AC00718272 /* ScrollViewPlaceholder */,
 				E08B0C2C240244A100A974A4 /* AppDelegate.h */,
 				E08B0C2D240244A100A974A4 /* AppDelegate.m */,
 				E08B0C2F240244A100A974A4 /* SceneDelegate.h */,
@@ -115,6 +148,16 @@
 				E08B0C33240244A100A974A4 /* ViewController.m */,
 				E08B0C612402450600A974A4 /* NSObject+Swizzling.h */,
 				E08B0C622402450600A974A4 /* NSObject+Swizzling.m */,
+				825CE4252403C8F000718272 /* UIViewController+Swizzling.h */,
+				825CE4262403C8F000718272 /* UIViewController+Swizzling.m */,
+				825CE4282403CA8E00718272 /* NSMutableArray+Swizzling.h */,
+				825CE4292403CA8E00718272 /* NSMutableArray+Swizzling.m */,
+				825CE42B2403D25D00718272 /* UIButton+Swizzling.h */,
+				825CE42C2403D25D00718272 /* UIButton+Swizzling.m */,
+				825CE4312403DCD700718272 /* UILabel+Swizzling.h */,
+				825CE4322403DCD700718272 /* UILabel+Swizzling.m */,
+				825CE4342403DE1A00718272 /* UINavigationItem+Swizzling.h */,
+				825CE4352403DE1A00718272 /* UINavigationItem+Swizzling.m */,
 				E08B0C35240244A100A974A4 /* Main.storyboard */,
 				E08B0C38240244A100A974A4 /* Assets.xcassets */,
 				E08B0C3A240244A100A974A4 /* LaunchScreen.storyboard */,
@@ -272,10 +315,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825CE43D2403E12F00718272 /* MOPlaceholderView.m in Sources */,
+				825CE42A2403CA8E00718272 /* NSMutableArray+Swizzling.m in Sources */,
 				E08B0C34240244A100A974A4 /* ViewController.m in Sources */,
 				E08B0C2E240244A100A974A4 /* AppDelegate.m in Sources */,
+				825CE4272403C8F000718272 /* UIViewController+Swizzling.m in Sources */,
 				E08B0C3F240244A100A974A4 /* main.m in Sources */,
+				825CE4332403DCD700718272 /* UILabel+Swizzling.m in Sources */,
+				825CE43A2403E0E400718272 /* UITableView+Placeholder.m in Sources */,
+				825CE42D2403D25D00718272 /* UIButton+Swizzling.m in Sources */,
 				E08B0C632402450600A974A4 /* NSObject+Swizzling.m in Sources */,
+				825CE4362403DE1A00718272 /* UINavigationItem+Swizzling.m in Sources */,
 				E08B0C31240244A100A974A4 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
