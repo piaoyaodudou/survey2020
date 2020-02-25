@@ -6,9 +6,7 @@
 //  Copyright © 2020 moxiaoyan. All rights reserved.
 //
 #import "NSObject+Swizzling.h"
-
 @implementation NSObject (Swizzling)
-
 + (void)methodSwizzlingWithOriginalSelector:(SEL)originalSelector bySwizzledSelector:(SEL)swizzledSelector {
   Class class = [self class];
   // 原有方法
@@ -29,5 +27,4 @@
     method_exchangeImplementations(originalMethod, swizzledMetod);
   }
 }
-
 @end

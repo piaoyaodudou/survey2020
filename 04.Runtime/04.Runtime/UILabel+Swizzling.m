@@ -13,32 +13,29 @@
 + (void)load {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    [self methodSwizzlingWithOriginalSelector:@selector(init) bySwizzledSelector:@selector(sure_Init)];
-    [self methodSwizzlingWithOriginalSelector:@selector(initWithFrame:) bySwizzledSelector:@selector(sure_InitWithFrame:)];
-    [self methodSwizzlingWithOriginalSelector:@selector(awakeFromNib) bySwizzledSelector:@selector(sure_AwakeFromNib)];
+    [self methodSwizzlingWithOriginalSelector:@selector(init) bySwizzledSelector:@selector(mo_Init)];
+    [self methodSwizzlingWithOriginalSelector:@selector(initWithFrame:) bySwizzledSelector:@selector(mo_InitWithFrame:)];
+    [self methodSwizzlingWithOriginalSelector:@selector(awakeFromNib) bySwizzledSelector:@selector(mo_AwakeFromNib)];
   });
 }
-
-- (instancetype)sure_Init {
-  id __self = [self sure_Init];
+- (instancetype)mo_Init {
+  id __self = [self mo_Init];
   UIFont *font = [UIFont fontWithName:@"Zapfino" size:self.font.pointSize];
   if (font) {
     self.font = font;
   }
   return __self;
 }
-
-- (instancetype)sure_InitWithFrame:(CGRect)rect {
-  id __self = [self sure_InitWithFrame:rect];
+- (instancetype)mo_InitWithFrame:(CGRect)rect {
+  id __self = [self mo_InitWithFrame:rect];
   UIFont *font = [UIFont fontWithName:@"Zapfino" size:self.font.pointSize];
   if (font) {
     self.font = font;
   }
   return __self;
 }
-
-- (void)sure_AwakeFromNib {
-  [self sure_AwakeFromNib];
+- (void)mo_AwakeFromNib {
+  [self mo_AwakeFromNib];
   UIFont *font = [UIFont fontWithName:@"Zapfino" size:self.font.pointSize];
   if (font) {
     self.font = font;

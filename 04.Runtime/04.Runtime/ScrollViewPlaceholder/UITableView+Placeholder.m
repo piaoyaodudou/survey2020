@@ -15,11 +15,11 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     [self methodSwizzlingWithOriginalSelector:@selector(reloadData)
-                           bySwizzledSelector:@selector(sure_reloadData)];
+                           bySwizzledSelector:@selector(mo_reloadData)];
   });
 }
 
-- (void)sure_reloadData {
+- (void)mo_reloadData {
   if (!self.placeholderView) {
     self.placeholderView = [[MOPlaceholderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     self.placeholderView.state = self.state;
@@ -33,7 +33,7 @@
   } else {
     self.placeholderView.state = self.state;
   }
-  [self sure_reloadData];
+  [self mo_reloadData];
 }
 
 - (UIView *)placeholderView {

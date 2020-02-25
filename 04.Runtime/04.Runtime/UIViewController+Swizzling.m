@@ -14,12 +14,12 @@
 + (void)load {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    [self methodSwizzlingWithOriginalSelector:@selector(viewWillDisappear:) bySwizzledSelector:@selector(sure_viewWillDisappear:)];
+    [self methodSwizzlingWithOriginalSelector:@selector(viewWillDisappear:) bySwizzledSelector:@selector(mo_viewWillDisappear:)];
   });
 }
 
-- (void)sure_viewWillDisappear:(BOOL)animated {
-  [self sure_viewWillDisappear:animated];
+- (void)mo_viewWillDisappear:(BOOL)animated {
+  [self mo_viewWillDisappear:animated];
   // [SVProgressHUD dismiss];
   // 添加埋点等
 }

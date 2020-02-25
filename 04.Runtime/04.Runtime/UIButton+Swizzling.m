@@ -15,8 +15,31 @@
 + (void)load {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    [self methodSwizzlingWithOriginalSelector:@selector(sendAction:to:forEvent:) bySwizzledSelector:@selector(sure_SendAction:to:forEvent:)];
+    [self methodSwizzlingWithOriginalSelector:@selector(sendAction:to:forEvent:) bySwizzledSelector:@selector(mo_SendAction:to:forEvent:)];
   });
+}
+
+// 当按钮点击事件 sendAction 时将会执行 mo_SendAction
+- (void)mo_SendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
+  if (self.isIgnore) { // 不需要被hook
+    [self mo_SendAction:action to:target forEvent:event];
+    return;
+  }
+  if ([NSStringFromClass(self.class) isEqualToString:@"UIButton"]) {
+    if (self.isIgnoreEvent) {
+      return;
+    } else {
+      self.timeInterval = self.timeInterval == 0 ? defaultInterval : self.timeInterval; // 是否自定义，否则用默认值
+      [self performSelector:@selector(resetState) withObject:nil afterDelay:defaultInterval];
+    }
+  }
+  // 此处 methodA 和 methodB方法IMP互换了，实际上执行 sendAction；所以不会死循环
+  self.isIgnoreEvent = YES;
+  [self mo_SendAction:action to:target forEvent:event]; // 执行系统的原有方法
+}
+
+- (void)resetState {
+  [self setIsIgnoreEvent:NO];
 }
 
 - (BOOL)isIgnore {
@@ -36,29 +59,6 @@
 }
 - (BOOL)isIgnoreEvent {
   return [objc_getAssociatedObject(self, _cmd) boolValue];
-}
-
-// 当按钮点击事件 sendAction 时将会执行 sure_SendAction
-- (void)sure_SendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
-  if (self.isIgnore) { // 不需要被hook
-    [self sure_SendAction:action to:target forEvent:event];
-    return;
-  }
-  if ([NSStringFromClass(self.class) isEqualToString:@"UIButton"]) {
-    if (self.isIgnoreEvent) {
-      return;
-    } else {
-      self.timeInterval = self.timeInterval == 0 ? defaultInterval : self.timeInterval; // 是否自定义，否则用默认值
-      [self performSelector:@selector(resetState) withObject:nil afterDelay:defaultInterval];
-    }
-  }
-  // 此处 methodA 和 methodB方法IMP互换了，实际上执行 sendAction；所以不会死循环
-  self.isIgnoreEvent = YES;
-  [self sure_SendAction:action to:target forEvent:event]; // 执行系统的原有方法
-}
-
-- (void)resetState {
-  [self setIsIgnoreEvent:NO];
 }
 
 @end
