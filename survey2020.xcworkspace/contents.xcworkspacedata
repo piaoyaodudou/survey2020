@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:05.SaveData/05.SaveData.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:00.SwiftTest/00.SwiftTest.xcodeproj">
    </FileRef>
    <FileRef

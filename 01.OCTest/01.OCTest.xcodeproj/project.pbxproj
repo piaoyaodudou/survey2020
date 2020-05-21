@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82158801246CD99300037F04 /* MOTestInitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158800246CD99300037F04 /* MOTestInitView.m */; };
+		82158892246E209000037F04 /* MOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158891246E209000037F04 /* MOViewController.m */; };
+		8231010D243ECE740058EB65 /* MOResponderTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8231010C243ECE740058EB65 /* MOResponderTestView.m */; };
 		B3ABE49A23C82AC900548867 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ABE49923C82AC900548867 /* AppDelegate.m */; };
 		B3ABE49D23C82AC900548867 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ABE49C23C82AC900548867 /* SceneDelegate.m */; };
 		B3ABE4A023C82AC900548867 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ABE49F23C82AC900548867 /* ViewController.m */; };
@@ -36,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		821587FF246CD99300037F04 /* MOTestInitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTestInitView.h; sourceTree = "<group>"; };
+		82158800246CD99300037F04 /* MOTestInitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOTestInitView.m; sourceTree = "<group>"; };
+		82158890246E209000037F04 /* MOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOViewController.h; sourceTree = "<group>"; };
+		82158891246E209000037F04 /* MOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOViewController.m; sourceTree = "<group>"; };
+		8231010B243ECE740058EB65 /* MOResponderTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOResponderTestView.h; sourceTree = "<group>"; };
+		8231010C243ECE740058EB65 /* MOResponderTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOResponderTestView.m; sourceTree = "<group>"; };
 		B3ABE49523C82AC900548867 /* 01.OCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01.OCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABE49823C82AC900548867 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3ABE49923C82AC900548867 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,6 +119,12 @@
 				B3ABE49C23C82AC900548867 /* SceneDelegate.m */,
 				B3ABE49E23C82AC900548867 /* ViewController.h */,
 				B3ABE49F23C82AC900548867 /* ViewController.m */,
+				82158890246E209000037F04 /* MOViewController.h */,
+				82158891246E209000037F04 /* MOViewController.m */,
+				8231010B243ECE740058EB65 /* MOResponderTestView.h */,
+				8231010C243ECE740058EB65 /* MOResponderTestView.m */,
+				821587FF246CD99300037F04 /* MOTestInitView.h */,
+				82158800246CD99300037F04 /* MOTestInitView.m */,
 				B3ABE4A123C82AC900548867 /* Main.storyboard */,
 				B3ABE4A423C82ACB00548867 /* Assets.xcassets */,
 				B3ABE4A623C82ACB00548867 /* LaunchScreen.storyboard */,
@@ -267,8 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82158801246CD99300037F04 /* MOTestInitView.m in Sources */,
+				82158892246E209000037F04 /* MOViewController.m in Sources */,
 				B3ABE4A023C82AC900548867 /* ViewController.m in Sources */,
 				B3ABE49A23C82AC900548867 /* AppDelegate.m in Sources */,
+				8231010D243ECE740058EB65 /* MOResponderTestView.m in Sources */,
 				B3ABE4AB23C82ACB00548867 /* main.m in Sources */,
 				B3ABE49D23C82AC900548867 /* SceneDelegate.m in Sources */,
 			);

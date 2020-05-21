@@ -48,6 +48,10 @@
   //  [self waitAsync];
     // 用处2：为线程加锁 (性能远高于@synchronized，仅次于OSSpinLock)
   //  [self locked];
+    // barrier 栅栏的使用
+//    [self barrierSync];
+    [self barrierAsync];
+    
     // 参考2：https://www.jianshu.com/p/a84c2bf0d77b
     // 参考3：https://www.cnblogs.com/yajunLi/p/6274282.html
     
@@ -60,6 +64,7 @@
 - (void)asyncGlobal {
   // 开启多个线程，并发执行，不阻塞
   dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+  // 添加并发事件
   dispatch_async(queue, ^{
     NSLog(@"执行1：%@", [NSThread currentThread]);
     sleep(2);
@@ -373,6 +378,52 @@
   // 当第一个异步循环走到wait时，因为semaphore>0，所以会-1，继续执行: signal+1
   // 如果下一个循环在上一个循环结束前开始, 因为 semaphore>0, 所以会wait，直到signal+1
   // 保证了log循序输出
+}
+
+- (void)barrierSync {
+  dispatch_queue_t queue = dispatch_queue_create("moxiaoyan", DISPATCH_QUEUE_CONCURRENT);
+  dispatch_async(queue, ^{
+    NSLog(@"执行1：%@", [NSThread currentThread]);
+    sleep(2);
+    NSLog(@"完成1：%@", [NSThread currentThread]);
+  });
+  dispatch_async(queue, ^{
+    NSLog(@"执行2：%@", [NSThread currentThread]);
+    sleep(3);
+    NSLog(@"完成2：%@", [NSThread currentThread]);
+  });
+  dispatch_barrier_sync(queue, ^{
+    NSLog(@"栅栏");
+  });
+  dispatch_async(queue, ^{
+    NSLog(@"执行3：%@", [NSThread currentThread]);
+    sleep(1);
+    NSLog(@"完成3：%@", [NSThread currentThread]);
+  });
+  NSLog(@"是否阻塞主线程"); // 会
+}
+
+- (void)barrierAsync {
+  dispatch_queue_t queue = dispatch_queue_create("moxiaoyan", DISPATCH_QUEUE_CONCURRENT);
+  dispatch_async(queue, ^{
+    NSLog(@"执行1：%@", [NSThread currentThread]);
+    sleep(2);
+    NSLog(@"完成1：%@", [NSThread currentThread]);
+  });
+  dispatch_async(queue, ^{
+    NSLog(@"执行2：%@", [NSThread currentThread]);
+    sleep(3);
+    NSLog(@"完成2：%@", [NSThread currentThread]);
+  });
+  dispatch_barrier_async(queue, ^{
+    NSLog(@"栅栏");
+  });
+  dispatch_async(queue, ^{
+    NSLog(@"执行3：%@", [NSThread currentThread]);
+    sleep(1);
+    NSLog(@"完成3：%@", [NSThread currentThread]);
+  });
+  NSLog(@"是否阻塞主线程"); // 不会
 }
 
 #pragma mark - diapatch_apply
