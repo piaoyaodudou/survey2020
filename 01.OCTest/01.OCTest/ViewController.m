@@ -35,7 +35,9 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
-    NSLog(@"ViewController init"); // ??/
+    NSLog(@"ViewController init"); // ??
+    
+    
   }
   return self;
 }
@@ -48,6 +50,7 @@
   [self.view addSubview:view];
   
   self.name = @"莫小言";
+  
   
   UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
   btn.frame = CGRectMake(100, 300, 100, 60);

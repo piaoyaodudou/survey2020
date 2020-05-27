@@ -15,6 +15,10 @@
 		82989AA22464001900E80DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82989AA12464001900E80DCF /* Assets.xcassets */; };
 		82989AA52464001900E80DCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82989AA32464001900E80DCF /* LaunchScreen.storyboard */; };
 		82989AAF24640E8200E80DCF /* MOCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82989AAE24640E8200E80DCF /* MOCoreDataManager.swift */; };
+		82BBDE5A247B97B3008DABEE /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBDE56247B97B3008DABEE /* Car+CoreDataClass.swift */; };
+		82BBDE5B247B97B3008DABEE /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBDE57247B97B3008DABEE /* Car+CoreDataProperties.swift */; };
+		82BBDE5C247B97B3008DABEE /* Student+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBDE58247B97B3008DABEE /* Student+CoreDataClass.swift */; };
+		82BBDE5D247B97B3008DABEE /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBDE59247B97B3008DABEE /* Student+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		82989AA42464001900E80DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82989AA62464001900E80DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82989AAE24640E8200E80DCF /* MOCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCoreDataManager.swift; sourceTree = "<group>"; };
+		82BBDE56247B97B3008DABEE /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Car+CoreDataClass.swift"; path = "../../Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		82BBDE57247B97B3008DABEE /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Car+CoreDataProperties.swift"; path = "../../Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		82BBDE58247B97B3008DABEE /* Student+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Student+CoreDataClass.swift"; path = "../../Student+CoreDataClass.swift"; sourceTree = "<group>"; };
+		82BBDE59247B97B3008DABEE /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Student+CoreDataProperties.swift"; path = "../../Student+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,10 @@
 				82989A972464001700E80DCF /* SceneDelegate.swift */,
 				82989A992464001700E80DCF /* ViewController.swift */,
 				82989AAE24640E8200E80DCF /* MOCoreDataManager.swift */,
+				82BBDE56247B97B3008DABEE /* Car+CoreDataClass.swift */,
+				82BBDE57247B97B3008DABEE /* Car+CoreDataProperties.swift */,
+				82BBDE58247B97B3008DABEE /* Student+CoreDataClass.swift */,
+				82BBDE59247B97B3008DABEE /* Student+CoreDataProperties.swift */,
 				82989A9B2464001700E80DCF /* Main.storyboard */,
 				82989AA12464001900E80DCF /* Assets.xcassets */,
 				82989AA32464001900E80DCF /* LaunchScreen.storyboard */,
@@ -145,8 +157,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				82989AA02464001700E80DCF /* _5_SaveData.xcdatamodeld in Sources */,
+				82BBDE5C247B97B3008DABEE /* Student+CoreDataClass.swift in Sources */,
 				82989A9A2464001700E80DCF /* ViewController.swift in Sources */,
+				82BBDE5B247B97B3008DABEE /* Car+CoreDataProperties.swift in Sources */,
+				82BBDE5A247B97B3008DABEE /* Car+CoreDataClass.swift in Sources */,
 				82989A962464001700E80DCF /* AppDelegate.swift in Sources */,
+				82BBDE5D247B97B3008DABEE /* Student+CoreDataProperties.swift in Sources */,
 				82989A982464001700E80DCF /* SceneDelegate.swift in Sources */,
 				82989AAF24640E8200E80DCF /* MOCoreDataManager.swift in Sources */,
 			);

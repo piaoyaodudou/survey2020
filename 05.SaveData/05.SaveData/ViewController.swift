@@ -12,9 +12,13 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
+    // UserDefault
+    UserDefaults.standard.set(true, forKey: "login")
+    let login = UserDefaults.standard.bool(forKey: "login")
+    
+    // 
   }
-
 
 }
 
