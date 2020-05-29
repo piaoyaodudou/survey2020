@@ -197,9 +197,10 @@ extension MOWKWebViewController: WKNavigationDelegate {
     print("加载错误: didFailProvisionalNavigation: \(error)")
   }
   // MARK: - 需要响应身份验证时调用(需验证服务器证书)
-  func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-    print("需验证服务器证书: didReceive challenge")
-  }
+//  func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//    print("需验证服务器证书: didReceive challenge")
+//  }
+  
   // MARK: - web内容进程被终止时调用(iOS 9.0之后)
   func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
     print("进程被终止: webViewWebContentProcessDidTerminate")

@@ -12,10 +12,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  var url: URL?
+  var documentController: UIDocumentInteractionController?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
-
+    // 获取 Document/Inbox 里从其他app分享过来的文件
     let manager = FileManager.default
     let urlForDocument = manager.urls(for: .documentDirectory, in: .userDomainMask)
     var documentUrl = urlForDocument[0] as URL
@@ -24,14 +27,28 @@ class ViewController: UIViewController {
       let contentsOfPath = try manager.contentsOfDirectory(at: documentUrl,
                                                            includingPropertiesForKeys: nil,
                                                            options: .skipsHiddenFiles)
+      self.url = contentsOfPath.first // 保存，为了展示分享
       print("contentsOfPath:\n\(contentsOfPath)")
     } catch {
       print("error:\(error)")
     }
     
-
+    let btn = UIButton(type: .custom)
+    btn.setTitle("分享", for: .normal)
+    btn.setTitleColor(.red, for: .normal)
+    btn.addTarget(self, action: #selector(clickShare), for: .touchUpInside)
+    btn.frame = CGRect(x: 100, y: 200, width: 60, height: 44);
+    self.view.addSubview(btn)
+    
   }
 
+  // MARK: - 点击分享文件
+  @objc func clickShare() {
+    if let url = self.url {
+      documentController = UIDocumentInteractionController(url: url)
+      documentController?.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
+    }
+  }
 
 }
 
