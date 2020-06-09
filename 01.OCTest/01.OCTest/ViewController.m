@@ -27,17 +27,26 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
   self = [super initWithCoder:coder];
   if (self) {
-    NSLog(@"ViewController initWithCoder"); // ??/
+    NSLog(@"ViewController initWithCoder"); // ??
+    
+    [self someMethod];
+
   }
   return self;
+}
+
+- (void)someMethod {
+  __block int i = 10;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSLog(@"%d", i);
+  });
+  i = 20;
 }
 
 - (instancetype)init {
   self = [super init];
   if (self) {
     NSLog(@"ViewController init"); // ??
-    
-    
   }
   return self;
 }

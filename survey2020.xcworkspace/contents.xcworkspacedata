@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:07.AudioTimeSlider/07.AudioTimeSlider.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:06.ShareDocument/06.ShareDocument.xcodeproj">
    </FileRef>
    <FileRef

@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		82335B6B248A0EA600D31158 /* MOWaveTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82335B6A248A0EA600D31158 /* MOWaveTableView.m */; };
+		82335B6E248A1B8700D31158 /* MOTimeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82335B6D248A1B8700D31158 /* MOTimeTableView.m */; };
+		828FB60E24879ECE00BB6767 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 828FB60D24879ECE00BB6767 /* AppDelegate.m */; };
+		828FB61124879ECE00BB6767 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 828FB61024879ECE00BB6767 /* SceneDelegate.m */; };
+		828FB61424879ECE00BB6767 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828FB61324879ECE00BB6767 /* ViewController.m */; };
+		828FB61724879ECE00BB6767 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828FB61524879ECE00BB6767 /* Main.storyboard */; };
+		828FB61924879ED200BB6767 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 828FB61824879ED200BB6767 /* Assets.xcassets */; };
+		828FB61C24879ED200BB6767 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828FB61A24879ED200BB6767 /* LaunchScreen.storyboard */; };
+		828FB61F24879ED200BB6767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 828FB61E24879ED200BB6767 /* main.m */; };
+		828FB62724879F8300BB6767 /* MOAudioSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828FB62624879F8300BB6767 /* MOAudioSliderView.m */; };
+		8296F46F248E0E17002F6D8F /* samplePoints in Resources */ = {isa = PBXBuildFile; fileRef = 8296F46E248E0E17002F6D8F /* samplePoints */; };
+		8296F471248E0E93002F6D8F /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8296F470248E0E93002F6D8F /* demo.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		82335B69248A0EA600D31158 /* MOWaveTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOWaveTableView.h; sourceTree = "<group>"; };
+		82335B6A248A0EA600D31158 /* MOWaveTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOWaveTableView.m; sourceTree = "<group>"; };
+		82335B6C248A1B8700D31158 /* MOTimeTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTimeTableView.h; sourceTree = "<group>"; };
+		82335B6D248A1B8700D31158 /* MOTimeTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOTimeTableView.m; sourceTree = "<group>"; };
+		828FB60924879ECE00BB6767 /* 07.AudioTimeSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 07.AudioTimeSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		828FB60C24879ECE00BB6767 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		828FB60D24879ECE00BB6767 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		828FB60F24879ECE00BB6767 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		828FB61024879ECE00BB6767 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		828FB61224879ECE00BB6767 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		828FB61324879ECE00BB6767 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		828FB61624879ECE00BB6767 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		828FB61824879ED200BB6767 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		828FB61B24879ED200BB6767 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		828FB61D24879ED200BB6767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		828FB61E24879ED200BB6767 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		828FB62524879F8300BB6767 /* MOAudioSliderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOAudioSliderView.h; sourceTree = "<group>"; };
+		828FB62624879F8300BB6767 /* MOAudioSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOAudioSliderView.m; sourceTree = "<group>"; };
+		8296F46E248E0E17002F6D8F /* samplePoints */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = samplePoints; sourceTree = "<group>"; };
+		8296F470248E0E93002F6D8F /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		828FB60624879ECE00BB6767 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		828FB60024879ECE00BB6767 = {
+			isa = PBXGroup;
+			children = (
+				828FB60B24879ECE00BB6767 /* 07.AudioTimeSlider */,
+				828FB60A24879ECE00BB6767 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		828FB60A24879ECE00BB6767 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				828FB60924879ECE00BB6767 /* 07.AudioTimeSlider.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		828FB60B24879ECE00BB6767 /* 07.AudioTimeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				8296F470248E0E93002F6D8F /* demo.mp3 */,
+				8296F46E248E0E17002F6D8F /* samplePoints */,
+				828FB60C24879ECE00BB6767 /* AppDelegate.h */,
+				828FB60D24879ECE00BB6767 /* AppDelegate.m */,
+				828FB60F24879ECE00BB6767 /* SceneDelegate.h */,
+				828FB61024879ECE00BB6767 /* SceneDelegate.m */,
+				828FB61224879ECE00BB6767 /* ViewController.h */,
+				828FB61324879ECE00BB6767 /* ViewController.m */,
+				828FB62524879F8300BB6767 /* MOAudioSliderView.h */,
+				828FB62624879F8300BB6767 /* MOAudioSliderView.m */,
+				82335B6C248A1B8700D31158 /* MOTimeTableView.h */,
+				82335B6D248A1B8700D31158 /* MOTimeTableView.m */,
+				82335B69248A0EA600D31158 /* MOWaveTableView.h */,
+				82335B6A248A0EA600D31158 /* MOWaveTableView.m */,
+				828FB61524879ECE00BB6767 /* Main.storyboard */,
+				828FB61824879ED200BB6767 /* Assets.xcassets */,
+				828FB61A24879ED200BB6767 /* LaunchScreen.storyboard */,
+				828FB61D24879ED200BB6767 /* Info.plist */,
+				828FB61E24879ED200BB6767 /* main.m */,
+			);
+			path = 07.AudioTimeSlider;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		828FB60824879ECE00BB6767 /* 07.AudioTimeSlider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 828FB62224879ED200BB6767 /* Build configuration list for PBXNativeTarget "07.AudioTimeSlider" */;
+			buildPhases = (
+				828FB60524879ECE00BB6767 /* Sources */,
+				828FB60624879ECE00BB6767 /* Frameworks */,
+				828FB60724879ECE00BB6767 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 07.AudioTimeSlider;
+			productName = 07.AudioTimeSlider;
+			productReference = 828FB60924879ECE00BB6767 /* 07.AudioTimeSlider.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		828FB60124879ECE00BB6767 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = moxiaohui;
+				TargetAttributes = {
+					828FB60824879ECE00BB6767 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+				};
+			};
+			buildConfigurationList = 828FB60424879ECE00BB6767 /* Build configuration list for PBXProject "07.AudioTimeSlider" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 828FB60024879ECE00BB6767;
+			productRefGroup = 828FB60A24879ECE00BB6767 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				828FB60824879ECE00BB6767 /* 07.AudioTimeSlider */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		828FB60724879ECE00BB6767 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8296F46F248E0E17002F6D8F /* samplePoints in Resources */,
+				8296F471248E0E93002F6D8F /* demo.mp3 in Resources */,
+				828FB61C24879ED200BB6767 /* LaunchScreen.storyboard in Resources */,
+				828FB61924879ED200BB6767 /* Assets.xcassets in Resources */,
+				828FB61724879ECE00BB6767 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		828FB60524879ECE00BB6767 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				828FB61424879ECE00BB6767 /* ViewController.m in Sources */,
+				828FB60E24879ECE00BB6767 /* AppDelegate.m in Sources */,
+				828FB61F24879ED200BB6767 /* main.m in Sources */,
+				82335B6E248A1B8700D31158 /* MOTimeTableView.m in Sources */,
+				82335B6B248A0EA600D31158 /* MOWaveTableView.m in Sources */,
+				828FB62724879F8300BB6767 /* MOAudioSliderView.m in Sources */,
+				828FB61124879ECE00BB6767 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		828FB61524879ECE00BB6767 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				828FB61624879ECE00BB6767 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		828FB61A24879ED200BB6767 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				828FB61B24879ED200BB6767 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		828FB62024879ED200BB6767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		828FB62124879ED200BB6767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		828FB62324879ED200BB6767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BQB79N6ZP;
+				INFOPLIST_FILE = 07.AudioTimeSlider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = moxiaoyan.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		828FB62424879ED200BB6767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BQB79N6ZP;
+				INFOPLIST_FILE = 07.AudioTimeSlider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = moxiaoyan.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		828FB60424879ECE00BB6767 /* Build configuration list for PBXProject "07.AudioTimeSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				828FB62024879ED200BB6767 /* Debug */,
+				828FB62124879ED200BB6767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		828FB62224879ED200BB6767 /* Build configuration list for PBXNativeTarget "07.AudioTimeSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				828FB62324879ED200BB6767 /* Debug */,
+				828FB62424879ED200BB6767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 828FB60124879ECE00BB6767 /* Project object */;
+}
