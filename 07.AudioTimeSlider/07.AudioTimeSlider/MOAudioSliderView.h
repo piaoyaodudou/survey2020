@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 extern NSInteger const cellHeight;
+extern NSInteger const kAudioPlayerLineSpacing;
 
 NS_ASSUME_NONNULL_BEGIN
 

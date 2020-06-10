@@ -9,6 +9,7 @@
 #import "MOTimeTableView.h"
 #define kLeftSpacing ([UIScreen mainScreen].bounds.size.width/2 - 60)
 extern const NSInteger cellHeight;
+extern const NSInteger kAudioPlayerLineSpacing;
 
 @interface MOTimeCell : UITableViewCell
 @property (nonatomic, assign) NSInteger index;
@@ -55,7 +56,7 @@ extern const NSInteger cellHeight;
     }
     [_path moveToPoint:CGPointMake(0, y)];
     [_path addLineToPoint:CGPointMake(height, y)];
-    y += 8;
+    y += kAudioPlayerLineSpacing * 2;
   }
   _path.lineWidth = 1.0f;
   [[UIColor grayColor] set];

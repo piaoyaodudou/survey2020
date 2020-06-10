@@ -10,6 +10,7 @@
 #define kLeftSpacing ([UIScreen mainScreen].bounds.size.width/2 - 60)
 extern const NSInteger cellHeight;
 static const NSInteger height = 18;
+extern const NSInteger kAudioPlayerLineSpacing;
 
 @interface MOWaveCell : UITableViewCell
 @property (nonatomic, copy) void(^lastBlankHeight)(CGFloat height);
@@ -51,10 +52,10 @@ static const NSInteger height = 18;
     CGFloat length = n.floatValue * height;
     [_path moveToPoint:CGPointMake(midX - length, y)];
     [_path addLineToPoint:CGPointMake(midX + length, y)];
-    y += 4;
+    y += kAudioPlayerLineSpacing;
   }
   if (self.lastBlankHeight) {
-    self.lastBlankHeight(rect.size.height-y+4);
+    self.lastBlankHeight(rect.size.height - y + kAudioPlayerLineSpacing);
   }
   _path.lineWidth = 1.0f;
   [[UIColor blueColor] set];
