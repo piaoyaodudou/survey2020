@@ -345,7 +345,7 @@ static dispatch_queue_t current_file_queue() {
 //  // 参考：https://www.jianshu.com/p/a84c2bf0d77b
   
   // create的value表示，最多几个资源可访问 （可以测试一下：1~3）
-  dispatch_semaphore_t semaphore = dispatch_semaphore_create(2);
+  dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
   dispatch_queue_t quene = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   dispatch_async(quene, ^{
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
