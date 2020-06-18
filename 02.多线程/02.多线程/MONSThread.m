@@ -34,9 +34,7 @@
     
     // 使用
     // 例子：
-    [self MultiWindowTicket]; // 多窗口买票
-    
-    
+    [self MultiWindowTicket]; // 多窗口买票    
   }
   return self;
 }

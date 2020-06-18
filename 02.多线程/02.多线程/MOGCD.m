@@ -10,6 +10,17 @@
 
 @implementation MOGCD
 
+// 声明static函数
+// 声明了一个当前文件范围可用的队列：
+static dispatch_queue_t current_file_queue() {
+  static dispatch_queue_t mo_file_queue;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    mo_file_queue = dispatch_queue_create("com.moxiaoyan.file.queue", DISPATCH_QUEUE_SERIAL);
+  });
+  return mo_file_queue;
+}
+
 + (instancetype)shareInstance {
   static MOGCD *instance = nil;
   static dispatch_once_t oneToken;

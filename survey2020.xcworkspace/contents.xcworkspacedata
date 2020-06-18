@@ -2,21 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:07.AudioTimeSlider/07.AudioTimeSlider.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:06.ShareDocument/06.ShareDocument.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:05.SaveData/05.SaveData.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:00.SwiftTest/00.SwiftTest.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:01.OCTest/01.OCTest.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:01.SwiftTest/01.SwiftTest.xcodeproj">
    </FileRef>
    <FileRef
@@ -30,5 +15,14 @@
    </FileRef>
    <FileRef
       location = "group:04.Runtime/04.Runtime.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:05.SaveData/05.SaveData.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:06.ShareDocument/06.ShareDocument.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:07.AudioTimeSlider/07.AudioTimeSlider.xcodeproj">
    </FileRef>
 </Workspace>
