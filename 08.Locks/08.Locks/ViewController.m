@@ -28,7 +28,7 @@
   
 //  [self synchronized];  // 1. @synchronized
 //  [self NSLockDemo];    // 2. NSLock 互斥锁
-  [self pthreadMutex];  // 3. pthread_mutex
+//  [self pthreadMutex];  // 3. pthread_mutex
 //  [self osUnfairLock];    // 4. os_unfair_lock 互斥锁（OSSpinLock 已废弃）
 //
 //  [self deadLock];      // 死锁
@@ -36,7 +36,8 @@
 //  [self pthreadMutexSupportRecursive]; // pthread_mutex 也可以支持递归，需要设置PTHREAD_MUTEX_RECURSIVE
 //
 //  [self condition]; // 6. condition
-//  [self semaphore];  // 7. dispatch_semaphore 信号量
+  [self conditionLock]; // 7. conditionLock
+//  [self semaphore];  // 8. dispatch_semaphore 信号量
 }
 
 #pragma mark - synchronized
@@ -63,17 +64,32 @@
   self.items = [[NSMutableArray alloc] init];
   for (int i = 0; i < items.count; i++) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      [self.lock lock]; // 加锁
-      sleep(items.count - i);
-      [self.items addObject:items[i]];
-      NSLog(@"%@", self.items);
-      [self.lock unlock]; // 解锁
+//      [self.lock lock]; // 加锁
+//      sleep(items.count - i);
+//      [self.items addObject:items[i]];
+//      NSLog(@"%@", self.items);
+//      [self.lock unlock]; // 解锁
       
-//      if ([self.lock tryLock]) { // ???
+      // 尝试加锁
+      if ([self.lock tryLock]) {
+        sleep(items.count - i);
+        [self.items addObject:items[i]];
+        NSLog(@"%@", self.items);
+        [self.lock unlock];
+      } else {
+        NSLog(@"加锁失败: %i", i); // 重试方案???
+      }
+      
+      // 在一段时间后，尝试加锁
+//      BOOL locked = [self.lock lockBeforeDate:[NSDate dateWithTimeIntervalSinceNow:4]];
+//      if (locked) {
 //        sleep(items.count - i);
-//        [self.items addObject:item];
+//        [self.items addObject:items[i]];
 //        NSLog(@"%@", self.items);
+//
 //        [self.lock unlock];
+//      } else {
+//        NSLog(@"加锁失败: %i", i); // 重试方案???
 //      }
     });
   }
@@ -167,6 +183,8 @@
 #pragma mark - NSRecursiveLock 递归锁
 - (void)recursiveLock {
   NSRecursiveLock *lock = [[NSRecursiveLock alloc] init];
+//  [lock tryLock];
+//  [lock lockBeforeDate:[NSDate dateWithTimeIntervalSinceNow:2]];
   
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     static void (^RecursiveMethod)(int);
@@ -187,24 +205,24 @@
 
 #pragma mark - pthread_mutex 支持递归
 - (void)pthreadMutexSupportRecursive {
-  pthread_mutex_t lock;
+  pthread_mutex_t plock;
   pthread_mutexattr_t attr;
-  pthread_mutexattr_init(&attr);
-  pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
-  pthread_mutex_init(&lock, &attr);
-  pthread_mutexattr_destroy(&attr);
+  pthread_mutexattr_init(&attr); // 初始化attr, 并赋予默认
+  pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE); // 设置type为递归锁
+  pthread_mutex_init(&plock, &attr); // 若为 pthread_mutex_init(&plock, NULL) 则会死锁
+  pthread_mutexattr_destroy(&attr); // 销毁一个属性对象，在重新初始化之前该结构不能重复使用
   
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     static void (^RecursiveMethod)(int);
     RecursiveMethod = ^(int value) {
       NSLog(@"加锁: %d", value);
-      pthread_mutex_lock(&lock); // 加锁
+      pthread_mutex_lock(&plock); // 加锁
       if (value < 5) {
         sleep(2);
         RecursiveMethod(++value); // 解锁之前又加想锁, 需要等待锁的解除，
       }
       NSLog(@"解锁: %d", value);
-      pthread_mutex_unlock(&lock); // 解锁
+      pthread_mutex_unlock(&plock); // 解锁
     };
     RecursiveMethod(1);
     NSLog(@"finish");
@@ -214,23 +232,38 @@
 #pragma mark - condition 条件锁
 - (void)condition {
   NSCondition *lock = [[NSCondition alloc] init];
-//  //Son 线程
-//  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//    [lock lock];
-//    while (No Money) {
-//      [lock wait];
-//    }
-//    NSLog(@"The money has been used up.");
-//    [lock unlock];
-//  });
-//
-//  //Father线程
-//  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//    [lock lock];
-//    NSLog(@"Work hard to make money.");
-//    [lock signal];
-//    [lock unlock];
-//  });
+  
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSLog(@"start 1");
+    [lock lock];
+//    [lock waitUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]]; // 让当前线程等待一段时间
+    [lock wait];
+    NSLog(@"end 1");
+    [lock unlock];
+  });
+  
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSLog(@"start 2");
+    [lock lock];
+    [lock wait];
+    NSLog(@"end 2");
+    [lock unlock];
+  });
+
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSLog(@"start 3");
+    sleep(2);
+//    [lock signal]; // 唤醒一个等待的线程
+    [lock broadcast]; // 唤醒所有等待的线程
+    NSLog(@"end 3");
+  });
+}
+
+#pragma mark - conditionLock
+- (void)conditionLock {
+  
+  
+  
 }
 
 #pragma mark - 信号量
