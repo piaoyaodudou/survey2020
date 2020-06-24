@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:08.Locks/08.Locks.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:00.OCDemo/00.OCDemo.xcodeproj">
    </FileRef>
    <FileRef
@@ -30,5 +27,8 @@
    </FileRef>
    <FileRef
       location = "group:07.AudioTimeSlider/07.AudioTimeSlider.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:08.Locks/08.Locks.xcodeproj">
    </FileRef>
 </Workspace>

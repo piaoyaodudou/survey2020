@@ -51,6 +51,7 @@ extension ViewController: UITableViewDataSource {
       cell.textLabel?.text = "value2"
       cell.detailTextLabel?.text = "detailTextLabel"
       cell.accessoryType = .detailDisclosureButton // 感叹号按钮+>
+//      cell.accessoryView 可以替换 感叹号按钮
       return cell
     } else {
       // textLabel在上；detailTextLabel在下一行 缩小显示
