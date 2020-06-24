@@ -31,4 +31,7 @@
    <FileRef
       location = "group:08.Locks/08.Locks.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:09.NativeNetwork/09.NativeNetwork.xcodeproj">
+   </FileRef>
 </Workspace>
