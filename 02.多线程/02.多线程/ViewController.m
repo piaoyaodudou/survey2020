@@ -10,11 +10,17 @@
 #import "MOGCD.h"
 #import "MOOperationQueue.h"
 #import "MONSThread.h"
+#import <pthread.h>
 
 @interface ViewController ()
+@property (nonatomic, strong) NSMutableArray *devices;
 @end
 
-@implementation ViewController
+@implementation ViewController {
+  dispatch_queue_t _queue;
+  pthread_rwlock_t _rwLock;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   // GCD：C，生命周期：自动管理
@@ -30,8 +36,40 @@
   // 缺点：非线程安全，需要加锁，性能低；需要管理生命周期；
   // 底层是Pthread，基于C实现
   
-  [MOGCD shareInstance];
+//  [MOGCD shareInstance];
 //  [MOOperationQueue shareInstance];
 //  [MONSThread shareInstance];
+  self.devices = [NSMutableArray arrayWithArray:@[@"1", @"2", @"3"]];
+  _queue = dispatch_queue_create("com.wenwen.ticpod.boundsDevices", DISPATCH_QUEUE_SERIAL);
+
+  dispatch_group_t group = dispatch_group_create();
+//  dispatch_async(_queue, ^{
+    pthread_rwlock_wrlock(&_rwLock);
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSString *device in self.devices) {
+      dispatch_group_enter(group);
+      sleep(1);
+      [array addObject:[NSString stringWithFormat:@"%@%@", device, device]];
+      dispatch_group_leave(group);
+    }
+    dispatch_group_notify(group, _queue, ^{
+      self.devices = array;
+      NSLog(@"%@", self.devices);
+      pthread_rwlock_unlock(&_rwLock);
+    });
+//  });
+  
+  dispatch_async(_queue, ^{
+    pthread_rwlock_wrlock(&_rwLock);
+    NSLog(@"-- %@", self.devices);
+    pthread_rwlock_unlock(&_rwLock);
+  });
+  
+  dispatch_async(_queue, ^{
+    pthread_rwlock_rdlock(&_rwLock);
+    NSLog(@"-- %@", self.devices);
+    pthread_rwlock_unlock(&_rwLock);
+  });
+
 }
 @end
