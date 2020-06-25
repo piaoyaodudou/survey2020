@@ -49,16 +49,17 @@
   // 递归锁(recursivelock): 跟互斥类似, 但是允许同一个线程在未释放锁前，加锁N次锁, 不会引发死锁
 
   // 按目前的耗时排序
-//  [self osspinLock];            // 1. OSSpinLock 自旋锁 (不在线程安全, 会盲等, 已废弃)
+//  [self osspinLock];            // 1. OSSpinLock 自旋锁 (会导致优先级反转，不再安全iOS10+废弃)
+  // https://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/?utm_source=tuicool
 //  [self osUnfairLock];          // 1. os_unfair_lock 互斥锁 (iOS10+, 休眠)
 //  [self semaphore];             // 2. dispatch_semaphore 信号量，保证关键代码不并发执行
 //  [self pthreadMutex];          // 3. pthread_mutex 互斥锁 (苹果做出了优化, 性能不比semaphore差, 而且肯定安全)
-//  [self nsLock];                // 4. NSLock 互斥锁
-//  [self nsCondition];           // 5. NSCondition 条件锁 (有实现NSLocking协议, 能实现NSLock所有功能)
+//  [self nsLock];                // 4. NSLock 互斥锁 (封装了pthread_mutex，type是PTHREAD_MUTEX_ERRORCHECK，也就是当同一个线程获得同一个锁的时候，会返回错误)
+//  [self nsCondition];           // 5. NSCondition 条件锁 (用pthread_cond_t实现NSLocking协议, 能实现NSLock所有功能, 封装了一个互斥锁和信号量)
 //  [self pthreadMutexRecursive]; // 6. pthread_mutex(recursive) 递归锁 需要设置PTHREAD_MUTEX_RECURSIVE
 //  [self nsRecursiveLock];       // 7. NSRecursiveLock 递归锁
 //  [self nsConditionLock];       // 8. NSConditionLock 条件锁
-//  [self synchronized];          // 9. @synchronized 互斥锁 (用pthread_mutex_t实现的)
+//  [self synchronized];          // 9. @synchronized 互斥锁 (用pthread_mutex_t实现的) OC层面，传入一个OC对象，通过对象的哈希值来作为标识符得到互斥锁，存入到一个数组里面
 //  [self deadLock];  // 死锁
   
 //  [self POSIX_Codictions]; // POSIXConditions 条件锁：互斥锁 + 条件锁
@@ -228,27 +229,27 @@
   pthread_mutex_t plock;
   pthread_mutexattr_t attr;
   pthread_mutexattr_init(&attr); // 初始化attr, 并赋予默认
-//  PTHREAD_MUTEX_NORMAL: 互斥锁不会检测死锁。
+  pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE); // 设置type为递归锁
+//  PTHREAD_MUTEX_NORMAL: 缺省类型，也就是普通锁。互斥锁不会检测死锁。
+  // 当一个线程加锁以后，其余请求锁的线程将形成一个等待队列，并在解锁后先进先出原则获得锁。
   // 当一个线程解锁之前又锁上，将导致死锁。
   // 尝试解除其他线程上的锁，结果不可预测。
   // 尝试解除一个未锁定的锁，结果不可预测。
   
-//  PTHREAD_MUTEX_ERRORCHECK: 互斥锁提供错误检查。
-  // 当一个线程尝试重新锁定一个还未解开的锁时，将会返回一个错误。
+//  PTHREAD_MUTEX_ERRORCHECK: 检错锁，互斥锁提供错误检查。
+  // 当一个线程尝试重新锁定一个还未解开的锁时，将会返回一个错误 EDEADLK。
   // 尝试解除其他线程上的锁，将会返回一个错误。
   // 尝试解除一个未锁定的锁，将会返回一个错误。
   
 //  PTHREAD_MUTEX_RECURSIVE: 递归锁
-  // 一个线程可以多次锁定一个还未解开的锁，需要相同数量的解锁来释放锁，然后另一个线程才能获的互斥锁
+  // 一个线程可以多次锁定一个还未解开的锁，需要相同数量的 unlock 解锁，然后另一个线程才能获的互斥锁
   // 尝试解除其他线程上的锁，将会返回一个错误。
   // 尝试解除一个未锁定的锁，将会返回一个错误。
   
-//  PTHREAD_MUTEX_DEFAULT:
+//  PTHREAD_MUTEX_DEFAULT: 适应锁, 动作最简单的锁类型，仅等待解锁后重新竞争，没有等待队列。
   // 尝试递归锁定此类型的锁，结果不可预测。
   // 尝试解除其他线程上的锁，结果不可预测。
   // 尝试解除一个未锁定的锁，结果不可预测。
-  
-  pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE); // 设置type为递归锁
   pthread_mutex_init(&plock, &attr); // 若为 pthread_mutex_init(&plock, NULL) 则会死锁
   pthread_mutexattr_destroy(&attr); // 销毁一个属性对象，在重新初始化之前该结构不能重复使用
   

@@ -49,7 +49,7 @@ static dispatch_queue_t current_file_queue() {
     // 方法1：notify
   //  [self multipleNetwork1];
     // 方法2：enter leave
-  //  [self multipleNetwork2];
+    [self multipleNetwork2];
     
     // 需求：waiting多个异步顺序执行 semaphore
   //  [self multipleNetwork3];
@@ -61,7 +61,7 @@ static dispatch_queue_t current_file_queue() {
   //  [self locked];
     // barrier 栅栏的使用
 //    [self barrierSync];
-    [self barrierAsync];
+//    [self barrierAsync];
     
     // 参考2：https://www.jianshu.com/p/a84c2bf0d77b
     // 参考3：https://www.cnblogs.com/yajunLi/p/6274282.html
