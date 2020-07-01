@@ -14,7 +14,9 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+  UILabel *_lb;
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,18 +31,9 @@
   if (self) {
     NSLog(@"ViewController initWithCoder"); // ??
     
-    [self someMethod];
 
   }
   return self;
-}
-
-- (void)someMethod {
-  __block int i = 10;
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"%d", i);
-  });
-  i = 20;
 }
 
 - (instancetype)init {
@@ -63,6 +56,36 @@
   btn.backgroundColor = [UIColor redColor];
   [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:btn];
+  
+  _lb = [[UILabel alloc] init];
+  _lb.textColor = [UIColor blackColor];
+  _lb.font = [UIFont systemFontOfSize:16];
+  _lb.frame = CGRectMake(100, 500, 100, 60);
+  [self.view addSubview:_lb];
+
+  
+  [self someMethod];
+
+}
+
+
+- (void)someMethod {
+
+  CGFloat progress = 99.98;
+  NSDecimalNumber *decNumber = [[NSDecimalNumber alloc] initWithFloat:progress];
+  NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                     decimalNumberHandlerWithRoundingMode:NSRoundDown
+                                     scale:1 // 保留几位小数
+                                     raiseOnExactness:NO
+                                     raiseOnOverflow:NO
+                                     raiseOnUnderflow:NO
+                                     raiseOnDivideByZero:YES];
+  NSDecimalNumber *yy = [decNumber decimalNumberByRoundingAccordingToBehavior:roundUp];
+  NSString *str = [NSString stringWithFormat:@"%@", yy];
+  NSLog(@"%@", str);
+  NSLog(@"%@", yy);
+  _lb.text = [NSString stringWithFormat:@"%@", yy];
+  
 }
 
 - (void)clickBtn {

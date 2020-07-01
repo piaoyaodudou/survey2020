@@ -60,8 +60,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     fileManager()
     
-    
-    
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
