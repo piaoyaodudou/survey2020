@@ -38,38 +38,7 @@
   
 //  [MOGCD shareInstance];
 //  [MOOperationQueue shareInstance];
-//  [MONSThread shareInstance];
-  self.devices = [NSMutableArray arrayWithArray:@[@"1", @"2", @"3"]];
-  _queue = dispatch_queue_create("com.wenwen.ticpod.boundsDevices", DISPATCH_QUEUE_SERIAL);
-
-  dispatch_group_t group = dispatch_group_create();
-//  dispatch_async(_queue, ^{
-    pthread_rwlock_wrlock(&_rwLock);
-    NSMutableArray *array = [NSMutableArray array];
-    for (NSString *device in self.devices) {
-      dispatch_group_enter(group);
-      sleep(1);
-      [array addObject:[NSString stringWithFormat:@"%@%@", device, device]];
-      dispatch_group_leave(group);
-    }
-    dispatch_group_notify(group, _queue, ^{
-      self.devices = array;
-      NSLog(@"%@", self.devices);
-      pthread_rwlock_unlock(&_rwLock);
-    });
-//  });
-  
-  dispatch_async(_queue, ^{
-    pthread_rwlock_wrlock(&_rwLock);
-    NSLog(@"-- %@", self.devices);
-    pthread_rwlock_unlock(&_rwLock);
-  });
-  
-  dispatch_async(_queue, ^{
-    pthread_rwlock_rdlock(&_rwLock);
-    NSLog(@"-- %@", self.devices);
-    pthread_rwlock_unlock(&_rwLock);
-  });
+  [MONSThread shareInstance];
 
 }
 @end

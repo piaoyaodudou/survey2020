@@ -58,7 +58,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
     }
-    fileManager()
+//    fileManager()
+    test()
+  }
+  
+  func test() {
+    
+    
+    
+    
+    
     
   }
 

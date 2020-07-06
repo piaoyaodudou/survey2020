@@ -34,7 +34,10 @@
     
     // 使用
     // 例子：
-    [self MultiWindowTicket]; // 多窗口买票    
+//    [self MultiWindowTicket]; // 多窗口买票
+    
+    // afterDelay在子线程中未执行
+    [self afterDelayNowork];
   }
   return self;
 }
@@ -105,24 +108,26 @@
   [thread isExecuting]; // 是否正在执行中
   
   // 方法2：初始化一个子线程，特点：自动开启，是类方法
-  @autoreleasepool {
-    [NSThread detachNewThreadSelector:@selector(network:) toTarget:self withObject:@{@"name":@"moxiaohui"}];
-  }
+//  @autoreleasepool {
+//    [NSThread detachNewThreadSelector:@selector(network:) toTarget:self withObject:@{@"name":@"moxiaohui"}];
+//  }
   // 方法3：隐式创建
   // 子线程中执行：(耗时操作)
   [self performSelectorInBackground:@selector(network:) withObject:@{@"name":@"moxiaohui"}];
   // 主线程中执行：(执行更新UI之类得操作)
-  [self performSelectorOnMainThread:@selector(complete) withObject:nil waitUntilDone:YES];
+//  [self performSelectorOnMainThread:@selector(complete) withObject:nil waitUntilDone:YES];
   // 指定线程中执行
-  [self performSelector:@selector(complete) onThread:[NSThread mainThread] withObject:@{@"name":@"moxiaohui"} waitUntilDone:YES];
+//  [self performSelector:@selector(network:) onThread:[NSThread mainThread] withObject:@{@"name":@"moxiaohui"} waitUntilDone:YES];
+
+  
   // 当前线程中执行
-  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaohui"}];
-  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaoyan"} withObject:@{@"name":@"moxiaohui"}];
-  [self performSelector:@selector(afterDelay:) withObject:@{@"name":@"moxiaoyan"} afterDelay:5]; // 5s后执行
+//  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaohui"}];
+//  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaoyan"} withObject:@{@"name":@"moxiaohui"}];
+//  [self performSelector:@selector(afterDelay:) withObject:@{@"name":@"moxiaoyan"} afterDelay:5]; // 5s后执行
   // cancel 某一个方法
-  [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(afterDelay:) object:@{@"name":@"moxiaoyan"}];
+//  [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(afterDelay:) object:@{@"name":@"moxiaoyan"}];
   // cancel 当前对象所有perform方法
-  [NSObject cancelPreviousPerformRequestsWithTarget:self];
+//  [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 - (void)afterDelay:(NSDictionary *)info {
@@ -136,6 +141,18 @@
   NSLog(@"完成");
 }
 
+- (void)afterDelayNowork {
+  NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];
+  [thread start];
+}
+- (void)run {
+  [self performSelector:@selector(complete) withObject:nil afterDelay:2];
+  // 子线程不会自动创建RunLoop，导致定时器没有工作
+  // 在子线程里启动runloop
+  NSRunLoop *runLoop = [NSRunLoop currentRunLoop]; // 捕获取就不会主动创建
+  [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+  [runLoop run];
+}
 - (void)complete {
   NSLog(@"Update UI");
 }

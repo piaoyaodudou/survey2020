@@ -79,6 +79,8 @@ class ViewController: UIViewController {
        <string>com.apple.pef-binary</string>
      </array>
    </dict>
- 
+ </array>
+ </dict>
+
  */
 
