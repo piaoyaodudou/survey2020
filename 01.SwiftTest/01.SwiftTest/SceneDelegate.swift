@@ -59,16 +59,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
 //    fileManager()
-    test()
   }
   
-  func test() {
-    
-    
-    
-    
-    
-    
+  func isMatch(_ s: String, _ p: String) -> Bool {
+      
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
