@@ -13,8 +13,26 @@ int main(int argc, const char * argv[]) {
   printf("Hello, World!\n");
   
 
-//  printf("%d\n", runningSum(&nums, 4, returnSize));
+  printf("%d\n", subtractProductAndSum(4421));
   
   return 0;
 }
 
+int subtractProductAndSum(int n) {
+  int sum = 0;
+  int product = n%10;
+  int current = n;
+  int i = 0;
+  while (current >= 10) {
+    int c = current % 10;
+    sum += c;
+    if (i != 0) {
+      product *= c;
+    }
+    current /= 10;
+    i++;
+  }
+  sum += current;
+  product *= current;
+  return product - sum;
+}

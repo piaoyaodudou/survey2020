@@ -13,6 +13,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
   
+  func reverseLeftWords(_ s: String, _ n: Int) -> String {
+    let subStr = String(s.prefix(n))
+    let lastStr = String(s.suffix(s.count - n))
+    return lastStr + subStr
+  }
+
+
+  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
+    // Create the SwiftUI view that provides the window contents.
+    let contentView = ContentView()
+
+    // Use a UIHostingController as window root view controller.
+    if let windowScene = scene as? UIWindowScene {
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = UIHostingController(rootView: contentView)
+        self.window = window
+        window.makeKeyAndVisible()
+    }
+//    fileManager()
+    print(reverseLeftWords("abcdefg", 2))
+  }
+  
   func fileManager() {
     MOFileManager.shareInstance.creatFolder("moxiaoyan")
 //    MOFileManager.shareInstance.deleteFile("moxiaoyan")
@@ -41,28 +67,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     MOFileManager.shareInstance.equal("moxiaoyan", "moxiaoyan")
     
     // https://www.jianshu.com/p/8feb8b0df1d0
-  }
-
-  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-    // Create the SwiftUI view that provides the window contents.
-    let contentView = ContentView()
-
-    // Use a UIHostingController as window root view controller.
-    if let windowScene = scene as? UIWindowScene {
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UIHostingController(rootView: contentView)
-        self.window = window
-        window.makeKeyAndVisible()
-    }
-//    fileManager()
-  }
-  
-  func isMatch(_ s: String, _ p: String) -> Bool {
-      
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

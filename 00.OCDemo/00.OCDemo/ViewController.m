@@ -63,7 +63,6 @@
   _lb.frame = CGRectMake(100, 500, 100, 60);
   [self.view addSubview:_lb];
 
-  
   [self someMethod];
 
 }
@@ -71,21 +70,6 @@
 
 - (void)someMethod {
 
-  CGFloat progress = 99.98;
-  NSDecimalNumber *decNumber = [[NSDecimalNumber alloc] initWithFloat:progress];
-  NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
-                                     decimalNumberHandlerWithRoundingMode:NSRoundDown
-                                     scale:1 // 保留几位小数
-                                     raiseOnExactness:NO
-                                     raiseOnOverflow:NO
-                                     raiseOnUnderflow:NO
-                                     raiseOnDivideByZero:YES];
-  NSDecimalNumber *yy = [decNumber decimalNumberByRoundingAccordingToBehavior:roundUp];
-  NSString *str = [NSString stringWithFormat:@"%@", yy];
-  NSLog(@"%@", str);
-  NSLog(@"%@", yy);
-  _lb.text = [NSString stringWithFormat:@"%@", yy];
-  
 }
 
 - (void)clickBtn {
