@@ -7,16 +7,36 @@
 //
 
 #import "AppDelegate.h"
+#import "MOHomeViewController.h"
 
 @interface AppDelegate ()
-
+//@property (nonatomic, strong) UIWindow *window;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
+  if (@available(iOS 13.0, *)) {
+
+  } else {
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[MOHomeViewController alloc] init]];
+    self.window.rootViewController = nav;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+      
+  }
+
+//  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//  self.window.backgroundColor = [UIColor whiteColor];
+//  [self.window makeKeyAndVisible];
+
+//  UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[MOHomeViewController alloc] init]];
+//  self.window.rootViewController = nav;
+//  [self.window makeKeyAndVisible];
+
   return YES;
 }
 
