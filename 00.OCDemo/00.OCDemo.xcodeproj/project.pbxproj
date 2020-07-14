@@ -15,6 +15,7 @@
 		820E14F0249B3D1400B78CAB /* _0_OCDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E14EF249B3D1400B78CAB /* _0_OCDemoTests.m */; };
 		820E14FB249B3D1400B78CAB /* _0_OCDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E14FA249B3D1400B78CAB /* _0_OCDemoUITests.m */; };
 		820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E1509249B3D4500B78CAB /* MOResponderTestView.m */; };
+		8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811124BC0AFD00C8E29B /* YYWeakProxy.m */; };
 		E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */; };
 		E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */; };
 		E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */; };
@@ -55,6 +56,8 @@
 		820E14FC249B3D1400B78CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		820E1509249B3D4500B78CAB /* MOResponderTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOResponderTestView.m; sourceTree = "<group>"; };
 		820E150A249B3D4500B78CAB /* MOResponderTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOResponderTestView.h; sourceTree = "<group>"; };
+		8219811124BC0AFD00C8E29B /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		8219811224BC0AFD00C8E29B /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		E08C8B6924B9BBBC00334253 /* MOTimerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTimerViewController.h; sourceTree = "<group>"; };
 		E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOTimerViewController.m; sourceTree = "<group>"; };
 		E08C8B6C24B9BC4C00334253 /* NSTimer+MOBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+MOBlock.h"; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */,
 				E08C8B6C24B9BC4C00334253 /* NSTimer+MOBlock.h */,
 				E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */,
+				8219811224BC0AFD00C8E29B /* YYWeakProxy.h */,
+				8219811124BC0AFD00C8E29B /* YYWeakProxy.m */,
 				820E150A249B3D4500B78CAB /* MOResponderTestView.h */,
 				820E1509249B3D4500B78CAB /* MOResponderTestView.m */,
 				820E14DC249B3D1200B78CAB /* Main.storyboard */,
@@ -286,6 +291,7 @@
 				820E14E6249B3D1400B78CAB /* main.m in Sources */,
 				E08C8B7424B9C24F00334253 /* SceneDelegate.m in Sources */,
 				E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */,
+				8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */,
 				E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */,
 				E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */,
 				820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */,
