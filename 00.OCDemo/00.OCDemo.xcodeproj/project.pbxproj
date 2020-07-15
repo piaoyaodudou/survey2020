@@ -16,6 +16,7 @@
 		820E14FB249B3D1400B78CAB /* _0_OCDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E14FA249B3D1400B78CAB /* _0_OCDemoUITests.m */; };
 		820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E1509249B3D4500B78CAB /* MOResponderTestView.m */; };
 		8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811124BC0AFD00C8E29B /* YYWeakProxy.m */; };
+		8219811824BD884D00C8E29B /* MOBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811724BD884D00C8E29B /* MOBlockViewController.m */; };
 		E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */; };
 		E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */; };
 		E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */; };
@@ -58,6 +59,8 @@
 		820E150A249B3D4500B78CAB /* MOResponderTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOResponderTestView.h; sourceTree = "<group>"; };
 		8219811124BC0AFD00C8E29B /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		8219811224BC0AFD00C8E29B /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		8219811624BD884D00C8E29B /* MOBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBlockViewController.h; sourceTree = "<group>"; };
+		8219811724BD884D00C8E29B /* MOBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBlockViewController.m; sourceTree = "<group>"; };
 		E08C8B6924B9BBBC00334253 /* MOTimerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTimerViewController.h; sourceTree = "<group>"; };
 		E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOTimerViewController.m; sourceTree = "<group>"; };
 		E08C8B6C24B9BC4C00334253 /* NSTimer+MOBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+MOBlock.h"; sourceTree = "<group>"; };
@@ -116,20 +119,15 @@
 		820E14D2249B3D1200B78CAB /* 00.OCDemo */ = {
 			isa = PBXGroup;
 			children = (
+				82C037A824BE959B0011A5F2 /* Block */,
+				8219811524BD882E00C8E29B /* Timer */,
+				8219811424BD881D00C8E29B /* Responder */,
 				820E14D3249B3D1200B78CAB /* AppDelegate.h */,
 				820E14D4249B3D1200B78CAB /* AppDelegate.m */,
 				E08C8B7324B9C24F00334253 /* SceneDelegate.h */,
 				E08C8B7224B9C24F00334253 /* SceneDelegate.m */,
 				E08C8B6F24B9BD8E00334253 /* MOHomeViewController.h */,
 				E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */,
-				E08C8B6924B9BBBC00334253 /* MOTimerViewController.h */,
-				E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */,
-				E08C8B6C24B9BC4C00334253 /* NSTimer+MOBlock.h */,
-				E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */,
-				8219811224BC0AFD00C8E29B /* YYWeakProxy.h */,
-				8219811124BC0AFD00C8E29B /* YYWeakProxy.m */,
-				820E150A249B3D4500B78CAB /* MOResponderTestView.h */,
-				820E1509249B3D4500B78CAB /* MOResponderTestView.m */,
 				820E14DC249B3D1200B78CAB /* Main.storyboard */,
 				820E14DF249B3D1400B78CAB /* Assets.xcassets */,
 				820E14E1249B3D1400B78CAB /* LaunchScreen.storyboard */,
@@ -155,6 +153,37 @@
 				820E14FC249B3D1400B78CAB /* Info.plist */,
 			);
 			path = 00.OCDemoUITests;
+			sourceTree = "<group>";
+		};
+		8219811424BD881D00C8E29B /* Responder */ = {
+			isa = PBXGroup;
+			children = (
+				820E150A249B3D4500B78CAB /* MOResponderTestView.h */,
+				820E1509249B3D4500B78CAB /* MOResponderTestView.m */,
+			);
+			path = Responder;
+			sourceTree = "<group>";
+		};
+		8219811524BD882E00C8E29B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				E08C8B6924B9BBBC00334253 /* MOTimerViewController.h */,
+				E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */,
+				E08C8B6C24B9BC4C00334253 /* NSTimer+MOBlock.h */,
+				E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */,
+				8219811224BC0AFD00C8E29B /* YYWeakProxy.h */,
+				8219811124BC0AFD00C8E29B /* YYWeakProxy.m */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		82C037A824BE959B0011A5F2 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				8219811624BD884D00C8E29B /* MOBlockViewController.h */,
+				8219811724BD884D00C8E29B /* MOBlockViewController.m */,
+			);
+			path = Block;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +322,7 @@
 				E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */,
 				8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */,
 				E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */,
+				8219811824BD884D00C8E29B /* MOBlockViewController.m in Sources */,
 				E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */,
 				820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */,
 			);
@@ -463,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BQB79N6ZP;
 				INFOPLIST_FILE = 00.OCDemo/Info.plist;
@@ -480,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BQB79N6ZP;
 				INFOPLIST_FILE = 00.OCDemo/Info.plist;

@@ -9,6 +9,7 @@
 #import "MOHomeViewController.h"
 #import "MOResponderTestView.h" // 测试响应链
 #import "MOTimerViewController.h"
+#import "MOBlockViewController.h"
 
 @interface MOHomeViewController ()
 
@@ -28,27 +29,37 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  MOResponderTestView *view = [[MOResponderTestView alloc] initWithFrame:CGRectMake(50, 100, 200, 200)];
-  view.backgroundColor = [UIColor grayColor];
-  [self.view addSubview:view];
+  // 响应者
+//  MOResponderTestView *view = [[MOResponderTestView alloc] initWithFrame:CGRectMake(50, 100, 200, 200)];
+//  view.backgroundColor = [UIColor grayColor];
+//  [self.view addSubview:view];
   
-  UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-  [btn setTitle:@"计时器" forState:UIControlStateNormal];
-  btn.frame = CGRectMake(100, 400, 100, 60);
-  btn.backgroundColor = [UIColor redColor];
-  [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:btn];
+  // 计时器
+//  UIButton *timerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//  [timerBtn setTitle:@"计时器" forState:UIControlStateNormal];
+//  timerBtn.frame = CGRectMake(100, 400, 100, 60);
+//  timerBtn.backgroundColor = [UIColor redColor];
+//  [timerBtn addTarget:self action:@selector(clickTimerBtn) forControlEvents:UIControlEventTouchUpInside];
+//  [self.view addSubview:timerBtn];
+  
+  // Block
+  UIButton *blockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [blockBtn setTitle:@"Block" forState:UIControlStateNormal];
+  blockBtn.frame = CGRectMake(100, 400, 100, 60);
+  blockBtn.backgroundColor = [UIColor redColor];
+  [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:blockBtn];
 
   [self someMethod];
-
 }
-
 
 - (void)someMethod {
 
 }
-
-- (void)clickBtn {
+- (void)clickBlockBtn {
+  [self.navigationController pushViewController:[MOBlockViewController new] animated:YES];
+}
+- (void)clickTimerBtn {
   [self.navigationController pushViewController:[MOTimerViewController new] animated:YES];
 }
 @end

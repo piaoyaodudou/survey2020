@@ -9,28 +9,11 @@
 import UIKit
 import SwiftUI
 
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
-  
-  func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
-    var result: [Int] = []
-    var dic: [Int: Int] = [:]
-    for num in nums1 {
-      if let value = dic[num] {
-        dic[num] = value + 1
-      } else {
-        dic[num] = 1
-      }
-    }
-    for num in nums2 {
-      if let count = dic[num], count > 0 {
-        result.append(num)
-        dic[num] = count - 1
-      }
-    }
-    return result
-  }
 
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
