@@ -17,6 +17,9 @@
 		820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E1509249B3D4500B78CAB /* MOResponderTestView.m */; };
 		8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811124BC0AFD00C8E29B /* YYWeakProxy.m */; };
 		8219811824BD884D00C8E29B /* MOBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811724BD884D00C8E29B /* MOBlockViewController.m */; };
+		82C037BB24BEB5DD0011A5F2 /* MOAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */; };
+		82C037BE24BED0250011A5F2 /* MOCat.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BD24BED0250011A5F2 /* MOCat.m */; };
+		82C037C424BED6250011A5F2 /* MOAnimal+Sleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */; };
 		E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */; };
 		E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */; };
 		E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */; };
@@ -61,6 +64,12 @@
 		8219811224BC0AFD00C8E29B /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		8219811624BD884D00C8E29B /* MOBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBlockViewController.h; sourceTree = "<group>"; };
 		8219811724BD884D00C8E29B /* MOBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBlockViewController.m; sourceTree = "<group>"; };
+		82C037B924BEB5DD0011A5F2 /* MOAnimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOAnimal.h; sourceTree = "<group>"; };
+		82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOAnimal.m; sourceTree = "<group>"; };
+		82C037BC24BED0250011A5F2 /* MOCat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOCat.h; sourceTree = "<group>"; };
+		82C037BD24BED0250011A5F2 /* MOCat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOCat.m; sourceTree = "<group>"; };
+		82C037C224BED6250011A5F2 /* MOAnimal+Sleep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MOAnimal+Sleep.h"; sourceTree = "<group>"; };
+		82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MOAnimal+Sleep.m"; sourceTree = "<group>"; };
 		E08C8B6924B9BBBC00334253 /* MOTimerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTimerViewController.h; sourceTree = "<group>"; };
 		E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOTimerViewController.m; sourceTree = "<group>"; };
 		E08C8B6C24B9BC4C00334253 /* NSTimer+MOBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+MOBlock.h"; sourceTree = "<group>"; };
@@ -128,6 +137,12 @@
 				E08C8B7224B9C24F00334253 /* SceneDelegate.m */,
 				E08C8B6F24B9BD8E00334253 /* MOHomeViewController.h */,
 				E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */,
+				82C037B924BEB5DD0011A5F2 /* MOAnimal.h */,
+				82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */,
+				82C037C224BED6250011A5F2 /* MOAnimal+Sleep.h */,
+				82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */,
+				82C037BC24BED0250011A5F2 /* MOCat.h */,
+				82C037BD24BED0250011A5F2 /* MOCat.m */,
 				820E14DC249B3D1200B78CAB /* Main.storyboard */,
 				820E14DF249B3D1400B78CAB /* Assets.xcassets */,
 				820E14E1249B3D1400B78CAB /* LaunchScreen.storyboard */,
@@ -321,8 +336,11 @@
 				E08C8B7424B9C24F00334253 /* SceneDelegate.m in Sources */,
 				E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */,
 				8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */,
+				82C037C424BED6250011A5F2 /* MOAnimal+Sleep.m in Sources */,
 				E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */,
 				8219811824BD884D00C8E29B /* MOBlockViewController.m in Sources */,
+				82C037BE24BED0250011A5F2 /* MOCat.m in Sources */,
+				82C037BB24BEB5DD0011A5F2 /* MOAnimal.m in Sources */,
 				E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */,
 				820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */,
 			);

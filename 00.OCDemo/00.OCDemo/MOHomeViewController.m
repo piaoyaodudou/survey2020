@@ -10,9 +10,11 @@
 #import "MOResponderTestView.h" // 测试响应链
 #import "MOTimerViewController.h"
 #import "MOBlockViewController.h"
+#import "MOCat.h"
+#import "MOAnimal+Sleep.h"
 
-@interface MOHomeViewController ()
-
+@interface MOHomeViewController () <MOAnimalDelegate, MOAnimalSleepDelegate>
+//@property (nonatomic, copy) NSString *food;
 @end
 
 @implementation MOHomeViewController
@@ -28,7 +30,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
   // 响应者
 //  MOResponderTestView *view = [[MOResponderTestView alloc] initWithFrame:CGRectMake(50, 100, 200, 200)];
 //  view.backgroundColor = [UIColor grayColor];
@@ -43,23 +44,50 @@
 //  [self.view addSubview:timerBtn];
   
   // Block
-  UIButton *blockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-  [blockBtn setTitle:@"Block" forState:UIControlStateNormal];
-  blockBtn.frame = CGRectMake(100, 400, 100, 60);
-  blockBtn.backgroundColor = [UIColor redColor];
-  [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:blockBtn];
+//  UIButton *blockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//  [blockBtn setTitle:@"Block" forState:UIControlStateNormal];
+//  blockBtn.frame = CGRectMake(100, 400, 100, 60);
+//  blockBtn.backgroundColor = [UIColor redColor];
+//  [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
+//  [self.view addSubview:blockBtn];
 
-  [self someMethod];
+//  [self someMethod];
+  [self testProperty];
 }
 
 - (void)someMethod {
 
 }
+
 - (void)clickBlockBtn {
   [self.navigationController pushViewController:[MOBlockViewController new] animated:YES];
 }
 - (void)clickTimerBtn {
   [self.navigationController pushViewController:[MOTimerViewController new] animated:YES];
 }
+
+@synthesize food;
+- (void)testProperty {
+  MOCat *cat = [[MOCat alloc] init];
+  cat.name = @"momo";
+  cat.delegate = self;
+  [cat eat];
+  
+  cat.sleepDelegate = self;
+  cat.place = @"床";
+  [cat sleep];
+  
+//  cat.age = 10;
+//  NSLog(@"age %ld", (long)cat.age);
+  
+
+}
+
+- (void)eat {
+  NSLog(@"eat %@", self.food);
+}
+- (void)sleep:(NSString *)place {
+  NSLog(@"sleep %@", place);
+}
+
 @end
