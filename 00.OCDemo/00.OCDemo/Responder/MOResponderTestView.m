@@ -68,6 +68,8 @@
   return self;
 }
 
+
+
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
   NSLog(@"view");
   // 1、控件不允许与用户交互

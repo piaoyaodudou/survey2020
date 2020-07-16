@@ -11,12 +11,34 @@
 
 static NSString *placeKey = @"place";
 static NSString *sleepDlegateKey = @"sleepDelegate";
+static NSString *priceKey = @"place";
 
 // 1. static char studentNameKey; // 固定地址
 // 2. static const void *studentNameKey = &studentNameKey;
 // 3. @selector(place) // 使用getter方法名作为key
 
+@interface MOAnimal() {
+  NSString *_feel;
+}
+
+@end
+
 @implementation MOAnimal (Sleep)
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+//    _feel = @"good";
+  }
+  return self;
+}
+
++ (void)setPrice:(NSString *)price {
+  objc_setAssociatedObject(self.class, &priceKey, price, OBJC_ASSOCIATION_COPY);
+}
++ (NSString *)price {
+  return objc_getAssociatedObject(self.class, &priceKey);
+}
+
 
 // 需要在.m文件 #import <objc/runtime.h>
 // 然后用runtime实现set get 方法

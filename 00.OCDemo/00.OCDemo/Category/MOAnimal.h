@@ -18,7 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)eat;
 @end
 
-@interface MOAnimal : NSObject
+@interface MOAnimal : NSObject {
+  NSString *_key;
+}
 
 // 属性声明
 // 默认实现: @synthesize name = _name;

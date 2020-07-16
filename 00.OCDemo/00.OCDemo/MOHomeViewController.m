@@ -10,10 +10,11 @@
 #import "MOResponderTestView.h" // 测试响应链
 #import "MOTimerViewController.h"
 #import "MOBlockViewController.h"
-#import "MOCat.h"
-#import "MOAnimal+Sleep.h"
+//#import "MOCat.h"
+//#import "MOAnimal+Sleep.h"
 
-@interface MOHomeViewController () <MOAnimalDelegate, MOAnimalSleepDelegate>
+@interface MOHomeViewController ()
+//<MOAnimalDelegate, MOAnimalSleepDelegate>
 //@property (nonatomic, copy) NSString *food;
 @end
 
@@ -23,7 +24,6 @@
   self = [super initWithCoder:coder];
   if (self) {
     // 默认自带的ViewController会执行这个初始化方法
-
   }
   return self;
 }
@@ -36,58 +36,55 @@
 //  [self.view addSubview:view];
   
   // 计时器
-//  UIButton *timerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//  [timerBtn setTitle:@"计时器" forState:UIControlStateNormal];
-//  timerBtn.frame = CGRectMake(100, 400, 100, 60);
-//  timerBtn.backgroundColor = [UIColor redColor];
-//  [timerBtn addTarget:self action:@selector(clickTimerBtn) forControlEvents:UIControlEventTouchUpInside];
-//  [self.view addSubview:timerBtn];
+  UIButton *timerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [timerBtn setTitle:@"计时器" forState:UIControlStateNormal];
+  timerBtn.frame = CGRectMake(100, 400, 100, 60);
+  timerBtn.backgroundColor = [UIColor redColor];
+  [timerBtn addTarget:self action:@selector(clickTimerBtn) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:timerBtn];
   
   // Block
-//  UIButton *blockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//  [blockBtn setTitle:@"Block" forState:UIControlStateNormal];
-//  blockBtn.frame = CGRectMake(100, 400, 100, 60);
-//  blockBtn.backgroundColor = [UIColor redColor];
-//  [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
-//  [self.view addSubview:blockBtn];
+  UIButton *blockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [blockBtn setTitle:@"Block" forState:UIControlStateNormal];
+  blockBtn.frame = CGRectMake(100, 400, 100, 60);
+  blockBtn.backgroundColor = [UIColor redColor];
+  [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:blockBtn];
 
 //  [self someMethod];
-  [self testProperty];
+//  [self testProperty];
 }
 
 - (void)someMethod {
 
 }
 
-- (void)clickBlockBtn {
-  [self.navigationController pushViewController:[MOBlockViewController new] animated:YES];
-}
 - (void)clickTimerBtn {
   [self.navigationController pushViewController:[MOTimerViewController new] animated:YES];
 }
-
-@synthesize food;
-- (void)testProperty {
-  MOCat *cat = [[MOCat alloc] init];
-  cat.name = @"momo";
-  cat.delegate = self;
-  [cat eat];
-  
-  cat.sleepDelegate = self;
-  cat.place = @"床";
-  [cat sleep];
+- (void)clickBlockBtn {
+  [self.navigationController pushViewController:[MOBlockViewController new] animated:YES];
+}
+//@synthesize food;
+//- (void)testProperty {
+//  MOCat.price = @"1000";
+//  MOCat *cat = [[MOCat alloc] init];
+//  cat.name = @"momo";
+//  cat.delegate = self;
+//  [cat eat];
+//
+//  cat.sleepDelegate = self;
+//  cat.place = @"床";
+//  [cat sleep];
   
 //  cat.age = 10;
 //  NSLog(@"age %ld", (long)cat.age);
-  
-
-}
-
-- (void)eat {
-  NSLog(@"eat %@", self.food);
-}
-- (void)sleep:(NSString *)place {
-  NSLog(@"sleep %@", place);
-}
+//}
+//- (void)eat {
+//  NSLog(@"eat %@", self.food);
+//}
+//- (void)sleep:(NSString *)place {
+//  NSLog(@"sleep %@", place);
+//}
 
 @end

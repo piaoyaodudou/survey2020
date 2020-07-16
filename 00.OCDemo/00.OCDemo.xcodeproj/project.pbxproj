@@ -128,6 +128,7 @@
 		820E14D2249B3D1200B78CAB /* 00.OCDemo */ = {
 			isa = PBXGroup;
 			children = (
+				82C037C724C0355A0011A5F2 /* Category */,
 				82C037A824BE959B0011A5F2 /* Block */,
 				8219811524BD882E00C8E29B /* Timer */,
 				8219811424BD881D00C8E29B /* Responder */,
@@ -137,12 +138,6 @@
 				E08C8B7224B9C24F00334253 /* SceneDelegate.m */,
 				E08C8B6F24B9BD8E00334253 /* MOHomeViewController.h */,
 				E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */,
-				82C037B924BEB5DD0011A5F2 /* MOAnimal.h */,
-				82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */,
-				82C037C224BED6250011A5F2 /* MOAnimal+Sleep.h */,
-				82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */,
-				82C037BC24BED0250011A5F2 /* MOCat.h */,
-				82C037BD24BED0250011A5F2 /* MOCat.m */,
 				820E14DC249B3D1200B78CAB /* Main.storyboard */,
 				820E14DF249B3D1400B78CAB /* Assets.xcassets */,
 				820E14E1249B3D1400B78CAB /* LaunchScreen.storyboard */,
@@ -199,6 +194,19 @@
 				8219811724BD884D00C8E29B /* MOBlockViewController.m */,
 			);
 			path = Block;
+			sourceTree = "<group>";
+		};
+		82C037C724C0355A0011A5F2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				82C037B924BEB5DD0011A5F2 /* MOAnimal.h */,
+				82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */,
+				82C037C224BED6250011A5F2 /* MOAnimal+Sleep.h */,
+				82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */,
+				82C037BC24BED0250011A5F2 /* MOCat.h */,
+				82C037BD24BED0250011A5F2 /* MOCat.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

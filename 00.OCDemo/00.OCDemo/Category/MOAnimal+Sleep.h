@@ -16,11 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface MOAnimal (Sleep)
+@interface MOAnimal (Sleep) 
 
 // category 声明的属性
 // 不会自动生成 ivar setter getter
 @property (nonatomic, copy) NSString *place;
+@property (class, nonatomic, copy) NSString *price;
 
 @property (nonatomic, weak) id <MOAnimalSleepDelegate> sleepDelegate;
 

@@ -54,11 +54,17 @@
   // invalidate方法调用必须在timer添加到的runloop所在的线程
   
   // 除了iOS10新出的3个代Block的方法，其他的都会造成内存泄露，导致持有者的dealloc不会执行
-  // timer强引用了target, 因为timer运行的时候释放不了(被RunLoop强引用了), 导致被强引用的target也无法释放, target又强引用了self，从而导致当前VC释放不了。
-  // *所以其实并没有循环引用，只是Timer释放不了，从而导致VC释放不了，不能在VC的dealloc方法里 invalidate timer，从而导致内存泄露
+  // timer强引用了target, target又强引用了self，从而导致当前VC释放不了。
+
+  // 虽说这里有个强引用环，但造成泄露的主要原因是：
+  // RunLoop对Timer的强引用，导致Timer需要我们手动释放，释放最适宜的时机又是self的dealloc方法。
+  // 所以我们必须要保证self的正常释放，因而最关键的强引用是target对self的这条！！！
 
   // scheduled 开头的都是默认register到当前RunLoop下的
   // timer 开头的需要自己指定RunLoop
+  
+  [self.timer1 setFireDate:[NSDate distantFuture]]; // 暂停
+  [self.timer1 setFireDate:[NSDate date]]; // 恢复
   
   self.timer1 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerOne) userInfo:nil repeats:YES];
   self.timer2 = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -66,7 +72,6 @@
   }]; // iOS 10
 
   self.timer3 = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerThree) userInfo:nil repeats:YES];
-  [[NSRunLoop currentRunLoop] addTimer:self.timer3 forMode:NSRunLoopCommonModes];
   self.timer4 = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
     NSLog(@"timer 4");
   }]; // iOS 10
@@ -97,12 +102,12 @@
   self.timer8 = [NSTimer timerWithTimeInterval:1 invocation:self.invocation8 repeats:YES];
   [[NSRunLoop currentRunLoop] addTimer:self.timer8 forMode:NSRunLoopCommonModes];
   
-  //   GCD 定时器(不会被RunLoop强引用)
-  //   GCD 一次性定时器
+  // GCD 定时器(不会被RunLoop强引用)
+  // GCD 一次性定时器
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     NSLog(@"GCD 一次性计时器");
   });
-  //   GCD 重复性定时器
+  // GCD 重复性定时器
   self.gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
   dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)2 * NSEC_PER_SEC);
   uint64_t dur = (uint64_t)(2.0 * NSEC_PER_SEC);
