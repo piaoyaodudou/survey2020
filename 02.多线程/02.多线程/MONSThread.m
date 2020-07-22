@@ -73,7 +73,7 @@
 
 
 - (void)explain {
-  // NSThread 是iOS中轻量级得多线程，一个NSThread对象对应一条线程
+  // NSThread 是iOS中轻量级的多线程，一个NSThread对象对应一条线程
 
   // 一些类方法：
 //  [NSThread mainThread]; // 获取主线程

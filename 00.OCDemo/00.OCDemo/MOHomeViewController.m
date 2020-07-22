@@ -28,6 +28,8 @@
   return self;
 }
 
+
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   // 响应者
@@ -53,6 +55,28 @@
 
 //  [self someMethod];
 //  [self testProperty];
+  
+  CGFloat num = 99.99;
+  NSInteger nums = num * 10;
+  NSString *str = [NSString stringWithFormat:@"%ld.%ld", nums/10, nums%10];
+  NSLog(@"%@", str); // 99.9
+
+//  NSDecimalNumber *decNumber = [[NSDecimalNumber alloc] initWithFloat:99.0];
+//  NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+//                                     decimalNumberHandlerWithRoundingMode:NSRoundDown
+//                                     scale:1
+//                                     raiseOnExactness:NO
+//                                     raiseOnOverflow:NO
+//                                     raiseOnUnderflow:NO
+//                                     raiseOnDivideByZero:YES];
+//  NSDecimalNumber *yy = [decNumber decimalNumberByRoundingAccordingToBehavior:roundUp];
+//  NSString *str = [NSString stringWithFormat:@"%@", yy];
+//  NSLog(@"%@", str); // 99.9
+//  NSLog(@"%@", yy); // 99.90000000000001
+////  _lb.text = [NSString stringWithFormat:@"%@", yy]; // 99.9
+//  [blockBtn setTitle:[NSString stringWithFormat:@"%@", yy] forState:UIControlStateNormal];
+
+  
 }
 
 - (void)someMethod {

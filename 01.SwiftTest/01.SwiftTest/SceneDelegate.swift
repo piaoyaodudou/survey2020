@@ -15,9 +15,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
+  func minArray(_ numbers: [Int]) -> Int {
+    var min = numbers.last!
+    for i in numbers.reversed() {
+      if i <= min {
+        min = i
+      } else {
+        return min
+      }
+    }
+    return min
+  }
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    print(intersect([4,9,5], [9,4,9,8,4]))
+    print(minArray([3,4,5,1,2]))
 
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
