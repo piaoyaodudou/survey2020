@@ -14,22 +14,34 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
-
-  func minArray(_ numbers: [Int]) -> Int {
-    var min = numbers.last!
-    for i in numbers.reversed() {
-      if i <= min {
-        min = i
-      } else {
-        return min
+  
+  func minPathSum(_ grid: [[Int]]) -> Int {
+    var result: [[Int]] = grid
+    for i in 0..<grid.count {
+      let lines = grid[i]
+      for j in 0..<lines.count {
+        if i == 0 && j == 0 {
+          result[i][j] = grid[i][j]
+        } else if i == 0 {
+          result[i][j] = result[i][j - 1] + grid[i][j]
+        } else if j == 0 {
+          result[i][j] = result[i - 1][j] + grid[i][j]
+        } else {
+          result[i][j] = min(result[i][j - 1], result[i - 1][j]) + grid[i][j]
+        }
       }
     }
-    return min
+    return result.last?.last ?? 0
   }
-
+  
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    print(minArray([3,4,5,1,2]))
+    print(minPathSum([
+      [1,3,1],
+      [1,5,1],
+      [4,2,1]
+    ]))
 
+    
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).

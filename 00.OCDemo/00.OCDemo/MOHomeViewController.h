@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-// - 7大类别Categorys: 
+// - 7大类别Categorys:
 // SoloAmbient: 仅播放, 会中断其他播放, 锁屏/静音会静音. 如: 节奏大师
 // Ambient: 可与音乐同时播放, 锁屏/静音会静音. 如: 背景音乐
 // Record: 录音时中断其他播放, 如: 微信长按录音
@@ -43,8 +43,8 @@ NS_ASSUME_NONNULL_END
 // MoviePlayback: Playback 视频播放
 // VideoChat: PlayAndRecord 视频通话
 // SpokenAudio:
-- (BOOL)setMode:(NSString *)mode error:(NSError **)outError;
-- (BOOL)setCategory:(NSString *)category mode:(NSString *)mode options:(AVAudioSessionCategoryOptions)options error:(NSError **)outError;
+//- (BOOL)setMode:(NSString *)mode error:(NSError **)outError;
+//- (BOOL)setCategory:(NSString *)category mode:(NSString *)mode options:(AVAudioSessionCategoryOptions)options error:(NSError **)outError;
 
 
 // 被打断通知: AVAudioSessionInterruptionNotification
