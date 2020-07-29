@@ -8,6 +8,8 @@
 
 #import "MOBlockViewController.h"
 
+
+
 @interface MOPerson : NSObject
 @property (nonatomic, copy) NSString *name;
 @end
@@ -31,6 +33,7 @@ int globalCount = 0;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+
   // 捕获变量
   // 1、全局变量、全局静态变量: 直接使用，不会改变block结构
   // 2、局部静态变量: 拷贝指针，在block结构体中强引用

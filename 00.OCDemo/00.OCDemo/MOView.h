@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MOView : UIView
 
-
+// 再调用到view的reawRect:
 @end
 
 NS_ASSUME_NONNULL_END
+
