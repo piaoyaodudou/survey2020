@@ -13,6 +13,8 @@
 //#import "MOCat.h"
 //#import "MOAnimal+Sleep.h"
 #import "MOView.h"
+#import "MOButton.h"
+
 
 @interface MOHomeViewController ()
 //<MOAnimalDelegate, MOAnimalSleepDelegate>
@@ -20,8 +22,8 @@
 @end
 
 @implementation MOHomeViewController {
+//  NSString *_indentify;
 }
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
   self = [super initWithCoder:coder];
@@ -40,7 +42,6 @@
 //  MOResponderTestView *view = [[MOResponderTestView alloc] initWithFrame:CGRectMake(50, 100, 200, 200)];
 //  view.backgroundColor = [UIColor grayColor];
 //  [self.view addSubview:view];
-  
   // 计时器
   UIButton *timerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
   [timerBtn setTitle:@"计时器" forState:UIControlStateNormal];
@@ -50,20 +51,20 @@
   [self.view addSubview:timerBtn];
 
   // Block
-  UIButton *blockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  MOButton *blockBtn = [MOButton buttonWithType:UIButtonTypeCustom];
   [blockBtn setTitle:@"Block" forState:UIControlStateNormal];
-  blockBtn.frame = CGRectMake(100, 400, 100, 60);
+  blockBtn.frame = CGRectMake(100, 400, 100, 100);
   blockBtn.backgroundColor = [UIColor redColor];
   [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:blockBtn];
 
 //  [self someMethod];
-  
 
 }
 
-- (void)someMethod {
 
+
+- (void)someMethod {
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) | (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));

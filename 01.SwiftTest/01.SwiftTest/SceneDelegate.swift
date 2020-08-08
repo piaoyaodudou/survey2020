@@ -15,31 +15,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
   
-  func minPathSum(_ grid: [[Int]]) -> Int {
-    var result: [[Int]] = grid
-    for i in 0..<grid.count {
-      let lines = grid[i]
-      for j in 0..<lines.count {
-        if i == 0 && j == 0 {
-          result[i][j] = grid[i][j]
-        } else if i == 0 {
-          result[i][j] = result[i][j - 1] + grid[i][j]
-        } else if j == 0 {
-          result[i][j] = result[i - 1][j] + grid[i][j]
-        } else {
-          result[i][j] = min(result[i][j - 1], result[i - 1][j]) + grid[i][j]
-        }
-      }
+
+  func minArray(_ number: Int) -> Int {
+    if number == 0 {
+      return 0
+    } else if number == 1 {
+      return 1
+    } else {
+      
+      return minArray(number - 1) + minArray(number - 2)
     }
-    return result.last?.last ?? 0
   }
   
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    print(minPathSum([
-      [1,3,1],
-      [1,5,1],
-      [4,2,1]
-    ]))
+    print(minArray(4))
 
     
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
