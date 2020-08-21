@@ -40,15 +40,15 @@
     [operation setCompletionBlock:^{ // 任务执行完成后在子线程中执行
       NSLog(@"Completion %@", [NSThread currentThread]);
     }];
-//    [operation start];
+    [operation start];
     NSLog(@"是否阻塞主线程"); // 会
     // 可以设置特殊的先后执行顺序：addDependency
-//    [operation2 addDependency:operation1]; // 添加依赖
-//    [operation3 removeDependency:operation1]; // 移除依赖
+    [operation2 addDependency:operation1]; // 添加依赖
+    [operation3 removeDependency:operation1]; // 移除依赖
 
-//    [operation start];  // NSInvocationOperation alloc init 创建的需要手动开启
-//    [operation cancel]; // 取消单个任务，只会对还未执行的任务有效
-//    [operation waitUntilFinished]; // 阻塞当前线程，直到任务执行完毕后继续 (最好不要在主线程中等待，会阻塞)
+    [operation start];  // NSInvocationOperation alloc init 创建的需要手动开启
+    [operation cancel]; // 取消单个任务，只会对还未执行的任务有效
+    [operation waitUntilFinished]; // 阻塞当前线程，直到任务执行完毕后继续 (最好不要在主线程中等待，会阻塞)
     // 观察任务状态:
     [operation isReady];  // 是否就绪
     [operation isExecuting]; // 是否正在执行中
@@ -82,30 +82,31 @@
       sleep(2);
       NSLog(@"完成5 block");
     }];
-//    [block start];
+    [block start];
     NSLog(@"是否阻塞主线程"); // 会
-
-//    // NSOperationQueue 操作队列，管理Operation对象，根据Operation开辟适量的线程
-      NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-      // 设置最大并发数: 1:同步 >=2:异步  默认:-1(无穷大)
-      // 注意：设置的是队列里面最多能并发运行的操作任务个数，而不是线程个数, (另外开启线程的数量是由系统决定的，所以这个值具体表示什么？)
-//      [queue setMaxConcurrentOperationCount:2];
-      // 将任务添加到队列中
-      [queue addOperation:operation];
-      NSLog(@"是否阻塞主线程");
-      [queue addOperation:block];
-      [queue addOperationWithBlock:^{
-        NSLog(@"执行6 %@", [NSThread currentThread]);
-        sleep(2);
-        NSLog(@"完成6");
-      }];
-      [queue addBarrierBlock:^{ // 队列中所有任务完成后执行
-        NSLog(@"all complete");
-      }];
-//      [queue setSuspended:YES]; // 暂停队列
-//      [queue setSuspended:NO];  // 继续队列
-//      [queue cancelAllOperations]; // 取消所有任务
-//      [queue waitUntilAllOperationsAreFinished]; // 阻塞当前线程，直到所有任务执行完毕后继续(最好不要在主线程中等待，会阻塞)
+    
+    // 3.NSOperationQueue
+    // NSOperationQueue 操作队列，管理Operation对象，根据Operation开辟适量的线程
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    // 设置最大并发数: 1:同步 >=2:异步  默认:-1(无穷大)
+    // 注意：设置的是队列里面最多能并发运行的操作任务个数，而不是线程个数, (另外开启线程的数量是由系统决定的，所以这个值具体表示什么？)
+    [queue setMaxConcurrentOperationCount:2];
+    // 将任务添加到队列中
+    [queue addOperation:operation];
+    NSLog(@"是否阻塞主线程");
+    [queue addOperation:block];
+    [queue addOperationWithBlock:^{
+      NSLog(@"执行6 %@", [NSThread currentThread]);
+      sleep(2);
+      NSLog(@"完成6");
+    }];
+    [queue addBarrierBlock:^{ // 队列中所有任务完成后执行
+      NSLog(@"all complete");
+    }];
+    [queue setSuspended:YES]; // 暂停队列
+    [queue setSuspended:NO];  // 继续队列
+    [queue cancelAllOperations]; // 取消所有任务
+    [queue waitUntilAllOperationsAreFinished]; // 阻塞当前线程，直到所有任务执行完毕后继续(最好不要在主线程中等待，会阻塞)
     
     // 参考：https://xiaovv.me/2017/06/17/The-basic-use-of-NSOperation-for-iOS-multithreading/
   }

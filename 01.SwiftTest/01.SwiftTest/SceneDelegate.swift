@@ -9,28 +9,13 @@
 import UIKit
 import SwiftUI
 
-
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
   
-
-  func minArray(_ number: Int) -> Int {
-    if number == 0 {
-      return 0
-    } else if number == 1 {
-      return 1
-    } else {
-      
-      return minArray(number - 1) + minArray(number - 2)
-    }
-  }
-  
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    print(minArray(4))
+//    print(fib(8))
 
-    
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).

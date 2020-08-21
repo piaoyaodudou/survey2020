@@ -14,11 +14,16 @@
 //#import "MOAnimal+Sleep.h"
 #import "MOView.h"
 #import "MOButton.h"
+#import <objc/runtime.h>
+@interface LBPerson: NSObject
+@end
+@implementation LBPerson
+@end
 
 
 @interface MOHomeViewController ()
 //<MOAnimalDelegate, MOAnimalSleepDelegate>
-//@property (nonatomic, copy) NSString *food;
+@property (nonatomic, copy) NSString *food;
 @end
 
 @implementation MOHomeViewController {
@@ -32,12 +37,21 @@
     // 默认自带的ViewController会执行这个初始化方法
   }
   return self;
+  
+/*
+
+  */
+
 }
 
 
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+
+
+  
   // 响应者
 //  MOResponderTestView *view = [[MOResponderTestView alloc] initWithFrame:CGRectMake(50, 100, 200, 200)];
 //  view.backgroundColor = [UIColor grayColor];
@@ -60,8 +74,9 @@
 
 //  [self someMethod];
 
+  
+  
 }
-
 
 
 - (void)someMethod {

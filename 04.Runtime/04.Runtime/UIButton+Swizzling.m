@@ -30,7 +30,7 @@
       return;
     } else {
       self.timeInterval = self.timeInterval == 0 ? defaultInterval : self.timeInterval; // 是否自定义，否则用默认值
-      [self performSelector:@selector(resetState) withObject:nil afterDelay:defaultInterval];
+      [self performSelector:@selector(resetState) withObject:nil afterDelay:self.timeInterval];
     }
   }
   // 此处 methodA 和 methodB方法IMP互换了，实际上执行 sendAction；所以不会死循环

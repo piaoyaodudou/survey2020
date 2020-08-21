@@ -110,8 +110,9 @@
   // GCD 重复性定时器
   self.gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
   dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)2 * NSEC_PER_SEC);
-  uint64_t dur = (uint64_t)(2.0 * NSEC_PER_SEC);
-  dispatch_source_set_timer(self.gcdTimer, start, dur, 0);
+  uint64_t duration = (uint64_t)(2.0 * NSEC_PER_SEC);
+  // 参数：sourceTimer 开始时间 循环间隔 精确度(这里写的0.1s)
+  dispatch_source_set_timer(self.gcdTimer, start, duration, 0.1 * NSEC_PER_SEC);
   __weak typeof(self) weakSelf = self;
   dispatch_source_set_event_handler(self.gcdTimer, ^{
     NSLog(@"GCD 重复性计时器");
