@@ -7,7 +7,8 @@
 //
 
 import UIKit
-let cellIndentifier: String = "MOCell"
+let cellIndentifier: String = "MOCellIndentifier"
+let headerIndentifier: String = "MOHeaderIndentifier"
 let insets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeInsets.zero
 
 class ViewController: UIViewController {
@@ -21,15 +22,21 @@ class ViewController: UIViewController {
   }
   
   func setupTableView() {
-    let items = [MOCellModel(title: "UITableViewStyle", controller: "MOTableViewStyleVC"),
-                 MOCellModel(title: "WKWebView与JS交互", controller: "MOWKWebViewController"),
-                 MOCellModel(title: "文件分享", controller: "MOShareDocumentVC")]
+    let section0 = [MOCellModel("UITableViewStyle", "MOTableViewStyleVC"),
+                    MOCellModel("WKWebView与JS交互", "MOWKWebViewController"),
+                    MOCellModel("文件分享", "MOShareDocumentVC")]
+    let section1 = [MOCellModel("文件操作", { [weak self] in
+      self?.fileManager()
+    })]
+    let sections = [section0, section1]
     
     let cellConfigure: MOCellConfigureClosure = { (cell: UITableViewCell, item: Any) in
-      let it: MOCellModel = item as! MOCellModel
+      guard let it: MOCellModel = item as? MOCellModel else {
+        return
+      }
       cell.textLabel?.text = it.title
     }
-    self.dataSource = MOArrayDataSource(items: items, cellIndentifier: cellIndentifier, cellConfigureClosure: cellConfigure)
+    self.dataSource = MOArrayDataSource(sections, cellIndentifier, cellConfigure)
 
     tableView.delegate = self
     tableView.dataSource = self.dataSource
@@ -47,42 +54,73 @@ class ViewController: UIViewController {
   lazy var tableView: UITableView = {
     let tableView = UITableView(frame: CGRect.zero, style: .plain)
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIndentifier)
+    tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: headerIndentifier)
+    tableView.tableHeaderView = UIView()
     tableView.tableFooterView = UIView()
     return tableView
   }()
 }
 
-
 extension ViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     let item: MOCellModel = self.dataSource?.itemAtIndexPath(indexPath) as! MOCellModel
-    guard let vc = self.classFromString(item.controller) else {
-      print("获取控制器失败")
-      return
-    }
-    navigationController?.pushViewController(vc, animated: true)
-  }
-  
-  func classFromString(_ className: String) -> UIViewController? {
-    // 项目名称不能包含: 数字 - or 其他一些特殊符号, 否则转换不了
-    guard let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String else {
-      print("未获取到命名空间")
-      return nil
-    }
     
-    let str = "\(appName).\(className)"
-    print(str)
+    if indexPath.section == 0 {
+      guard let vcName = item.vcName else {
+        print("vcName 为空")
+        return
+      }
+      
+      guard let vc = self.dataSource?.classFromString(vcName) else {
+        print("获取控制器失败")
+        return
+      }
+      navigationController?.pushViewController(vc, animated: true)
+    } else {
+      if let selected = item.selectedClosure {
+        selected()
+      }
+    }
+  }
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIndentifier)
+    header?.textLabel?.text = section == 0 ? "跳转" : "执行"
+    return header
+  }
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 30
+  }
+}
 
-    guard let vcClass = NSClassFromString(str) else {
-      print("未获取到对应类")
-      return nil
-    }
-    guard let vcType = vcClass as? UIViewController.Type else {
-      print("未转换成控制器类")
-      return nil
-    }
-    let vc = vcType.init()
-    return vc
+extension ViewController {
+  func fileManager() {
+    MOFileManager.shareInstance.creatFolder("moxiaoyan")
+  //    MOFileManager.shareInstance.deleteFile("moxiaoyan")
+
+    MOFileManager.shareInstance.createFile("moxiaoyan/test1.txt")
+  //    MOFileManager.shareInstance.deleteFile("moxiaoyan/test1.txt")
+    MOFileManager.shareInstance.enableFile("moxiaoyan") // /test1.txt
+    MOFileManager.shareInstance.readFile("moxiaoyan/test1.txt")
+    MOFileManager.shareInstance.copyFile()
+    // 写入数据
+  //    MOFileManager.shareInstance.write("moxiaoyan/test1.txt", string: "zzz")
+    
+    // 移动文件
+  //    MOFileManager.shareInstance.creatFolder("moxiaohui")
+  //    MOFileManager.shareInstance.moveFile("moxiaoyan/test1.txt", to:"moxiaohui")
+    
+    // 清空文件夹
+  //    MOFileManager.shareInstance.clearFolder("moxiaoyan")
+    
+    // 遍历“moxiaoyan”文件夹：test1.txt、test2.txt、momo文件夹/test3.text
+    MOFileManager.shareInstance.creatFolder("moxiaoyan/momo")
+    MOFileManager.shareInstance.createFile("moxiaoyan/momo/test3.txt")
+    MOFileManager.shareInstance.traversals("moxiaoyan")
+    
+    // 比较两个路径是否一致
+    MOFileManager.shareInstance.equal("moxiaoyan", "moxiaoyan")
+    
+    // https://www.jianshu.com/p/8feb8b0df1d0
   }
 }

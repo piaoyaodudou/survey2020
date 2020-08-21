@@ -8,13 +8,20 @@
 
 import UIKit
 
+typealias MOCellSelectedClosure = () -> Void
+
 class MOCellModel: NSObject {
   
   var title: String
-  var controller: String
+  var vcName: String?
+  var selectedClosure: MOCellSelectedClosure?
   
-  init(title: String, controller: String) {
+  init(_ title: String, _ vcName: String) {
     self.title = title
-    self.controller = controller
+    self.vcName = vcName
+  }
+  init(_ title: String, _ selectedClosure: @escaping MOCellSelectedClosure) {
+    self.title = title
+    self.selectedClosure = selectedClosure
   }
 }
