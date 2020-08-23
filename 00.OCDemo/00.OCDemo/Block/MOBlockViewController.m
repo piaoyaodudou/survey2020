@@ -8,12 +8,18 @@
 
 #import "MOBlockViewController.h"
 
-
-
-@interface MOPerson : NSObject
-@property (nonatomic, copy) NSString *name;
-@end
 @implementation MOPerson
++ (instancetype)personWithName:(NSString *)name number:(NSNumber *)number {
+  return [[[self class] alloc] initWithName:name number:number];
+}
+- (instancetype)initWithName:(NSString *)name number:(NSNumber *)number {
+  self = [super init];
+  if (self) {
+    self.name = name;
+    self.number = number;
+  }
+  return self;
+}
 @end
 
 int globalCount = 0;

@@ -8,22 +8,16 @@
 
 #include <stdio.h>
 
-struct TreeNode {
-    int val;
-    struct TreeNode *left;
-    struct TreeNode *right;
-};
-
 int main(int argc, const char * argv[]) {
-  // insert code here...
-  printf("Hello, World!\n");
+
+  int c1 = 197, c2 = 198;
+  printf("c1=%c, c2=%c\n", c1, c2);
+  printf("c1=%d, c2=%d\n", c1, c2);
   
-
-//  printf("%d\n", subtractProductAndSum(4421));
-
+  
+  char c3 = 197, c4 = 198;
+  printf("c3=%c, c4=%c\n", c3, c4);
+  printf("c3=%d, c4=%d\n", c3, c4);
+  
   return 0;
-}
-
-int kthLargest(struct TreeNode* root, int k){
-  
 }
