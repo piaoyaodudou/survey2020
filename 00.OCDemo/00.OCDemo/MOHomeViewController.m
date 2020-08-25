@@ -15,6 +15,7 @@
 #import "MOView.h"
 #import "MOButton.h"
 #import <objc/runtime.h>
+#import "MOPerson.h"
 
 typedef struct {
   float x, y, z;
@@ -61,7 +62,15 @@ typedef struct {
   [blockBtn addTarget:self action:@selector(clickBlockBtn) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:blockBtn];
 
-  [self someMethod];
+//  [self someMethod];
+  [self kvcAccessVariable];
+}
+
+- (void)kvcAccessVariable {
+  MOPerson *p1 = [MOPerson new];
+//  [MOPerson personWithName:@"lili" number:@(5)];
+  [p1 valueForKey:@"name"];
+  [p1 setValue:@"momo" forKey:@"name"];
 }
 
 - (void)someMethod {

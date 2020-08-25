@@ -21,6 +21,7 @@
 		82C037BE24BED0250011A5F2 /* MOCat.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BD24BED0250011A5F2 /* MOCat.m */; };
 		82C037C424BED6250011A5F2 /* MOAnimal+Sleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */; };
 		82C037DF24C989DB0011A5F2 /* MOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037DE24C989DB0011A5F2 /* MOView.m */; };
+		E015A00224F544F6004F1711 /* MOPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = E015A00124F544F6004F1711 /* MOPerson.m */; };
 		E060ADCD24C865C2005F0336 /* MOButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E060ADCC24C865C2005F0336 /* MOButton.m */; };
 		E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */; };
 		E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6D24B9BC4C00334253 /* NSTimer+MOBlock.m */; };
@@ -74,6 +75,8 @@
 		82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MOAnimal+Sleep.m"; sourceTree = "<group>"; };
 		82C037DD24C989DB0011A5F2 /* MOView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOView.h; sourceTree = "<group>"; };
 		82C037DE24C989DB0011A5F2 /* MOView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOView.m; sourceTree = "<group>"; };
+		E015A00024F544F6004F1711 /* MOPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOPerson.h; sourceTree = "<group>"; };
+		E015A00124F544F6004F1711 /* MOPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOPerson.m; sourceTree = "<group>"; };
 		E060ADCB24C865C2005F0336 /* MOButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOButton.h; sourceTree = "<group>"; };
 		E060ADCC24C865C2005F0336 /* MOButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOButton.m; sourceTree = "<group>"; };
 		E08C8B6924B9BBBC00334253 /* MOTimerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTimerViewController.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				E08C8B7224B9C24F00334253 /* SceneDelegate.m */,
 				E08C8B6F24B9BD8E00334253 /* MOHomeViewController.h */,
 				E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */,
+				E015A00024F544F6004F1711 /* MOPerson.h */,
+				E015A00124F544F6004F1711 /* MOPerson.m */,
 				82C037DD24C989DB0011A5F2 /* MOView.h */,
 				82C037DE24C989DB0011A5F2 /* MOView.m */,
 				E060ADCB24C865C2005F0336 /* MOButton.h */,
@@ -360,6 +365,7 @@
 				8219811824BD884D00C8E29B /* MOBlockViewController.m in Sources */,
 				82C037BE24BED0250011A5F2 /* MOCat.m in Sources */,
 				E060ADCD24C865C2005F0336 /* MOButton.m in Sources */,
+				E015A00224F544F6004F1711 /* MOPerson.m in Sources */,
 				82C037BB24BEB5DD0011A5F2 /* MOAnimal.m in Sources */,
 				E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */,
 				820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */,
