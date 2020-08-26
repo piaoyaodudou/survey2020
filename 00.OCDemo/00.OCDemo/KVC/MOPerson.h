@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MOPerson : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, strong) NSNumber *number;
+//@property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) NSArray <MOPerson *>*childens;
+@property (nonatomic, strong) NSArray *arr;
 
-+ (instancetype)personWithName:(NSString *)name number:(NSNumber *)number;
-- (instancetype)initWithName:(NSString *)name number:(NSNumber *)number;
++ (instancetype)personWithName:(NSString *)name;
 
 @end
 

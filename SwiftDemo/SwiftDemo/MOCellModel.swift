@@ -16,7 +16,7 @@ class MOCellModel: NSObject {
   var vcName: String?
   var selectedClosure: MOCellSelectedClosure?
   
-  init(_ title: String, _ vcName: String) {
+  init(_ title: String, _ vcName: String) { // TODO delete try
     self.title = title
     self.vcName = vcName
   }

@@ -17,6 +17,9 @@
 		820E1511249B3D4600B78CAB /* MOResponderTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E1509249B3D4500B78CAB /* MOResponderTestView.m */; };
 		8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811124BC0AFD00C8E29B /* YYWeakProxy.m */; };
 		8219811824BD884D00C8E29B /* MOBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219811724BD884D00C8E29B /* MOBlockViewController.m */; };
+		8269E0D524F61157004973E1 /* MOArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8269E0D424F61157004973E1 /* MOArrayDataSource.m */; };
+		8269E0D824F63B04004973E1 /* MOResponderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8269E0D724F63B04004973E1 /* MOResponderViewController.m */; };
+		8269E0DE24F64C79004973E1 /* MOKVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8269E0DD24F64C79004973E1 /* MOKVCViewController.m */; };
 		82C037BB24BEB5DD0011A5F2 /* MOAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */; };
 		82C037BE24BED0250011A5F2 /* MOCat.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BD24BED0250011A5F2 /* MOCat.m */; };
 		82C037C424BED6250011A5F2 /* MOAnimal+Sleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */; };
@@ -67,6 +70,12 @@
 		8219811224BC0AFD00C8E29B /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		8219811624BD884D00C8E29B /* MOBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBlockViewController.h; sourceTree = "<group>"; };
 		8219811724BD884D00C8E29B /* MOBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBlockViewController.m; sourceTree = "<group>"; };
+		8269E0D324F61157004973E1 /* MOArrayDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOArrayDataSource.h; sourceTree = "<group>"; };
+		8269E0D424F61157004973E1 /* MOArrayDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOArrayDataSource.m; sourceTree = "<group>"; };
+		8269E0D624F63B04004973E1 /* MOResponderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOResponderViewController.h; sourceTree = "<group>"; };
+		8269E0D724F63B04004973E1 /* MOResponderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOResponderViewController.m; sourceTree = "<group>"; };
+		8269E0DC24F64C79004973E1 /* MOKVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOKVCViewController.h; sourceTree = "<group>"; };
+		8269E0DD24F64C79004973E1 /* MOKVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOKVCViewController.m; sourceTree = "<group>"; };
 		82C037B924BEB5DD0011A5F2 /* MOAnimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOAnimal.h; sourceTree = "<group>"; };
 		82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOAnimal.m; sourceTree = "<group>"; };
 		82C037BC24BED0250011A5F2 /* MOCat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOCat.h; sourceTree = "<group>"; };
@@ -138,17 +147,18 @@
 			isa = PBXGroup;
 			children = (
 				82C037C724C0355A0011A5F2 /* Category */,
+				8219811424BD881D00C8E29B /* Responder */,
 				82C037A824BE959B0011A5F2 /* Block */,
 				8219811524BD882E00C8E29B /* Timer */,
-				8219811424BD881D00C8E29B /* Responder */,
+				8269E0DF24F64C95004973E1 /* KVC */,
 				820E14D3249B3D1200B78CAB /* AppDelegate.h */,
 				820E14D4249B3D1200B78CAB /* AppDelegate.m */,
 				E08C8B7324B9C24F00334253 /* SceneDelegate.h */,
 				E08C8B7224B9C24F00334253 /* SceneDelegate.m */,
 				E08C8B6F24B9BD8E00334253 /* MOHomeViewController.h */,
 				E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */,
-				E015A00024F544F6004F1711 /* MOPerson.h */,
-				E015A00124F544F6004F1711 /* MOPerson.m */,
+				8269E0D324F61157004973E1 /* MOArrayDataSource.h */,
+				8269E0D424F61157004973E1 /* MOArrayDataSource.m */,
 				82C037DD24C989DB0011A5F2 /* MOView.h */,
 				82C037DE24C989DB0011A5F2 /* MOView.m */,
 				E060ADCB24C865C2005F0336 /* MOButton.h */,
@@ -185,6 +195,8 @@
 			children = (
 				820E150A249B3D4500B78CAB /* MOResponderTestView.h */,
 				820E1509249B3D4500B78CAB /* MOResponderTestView.m */,
+				8269E0D624F63B04004973E1 /* MOResponderViewController.h */,
+				8269E0D724F63B04004973E1 /* MOResponderViewController.m */,
 			);
 			path = Responder;
 			sourceTree = "<group>";
@@ -200,6 +212,17 @@
 				8219811124BC0AFD00C8E29B /* YYWeakProxy.m */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		8269E0DF24F64C95004973E1 /* KVC */ = {
+			isa = PBXGroup;
+			children = (
+				E015A00024F544F6004F1711 /* MOPerson.h */,
+				E015A00124F544F6004F1711 /* MOPerson.m */,
+				8269E0DC24F64C79004973E1 /* MOKVCViewController.h */,
+				8269E0DD24F64C79004973E1 /* MOKVCViewController.m */,
+			);
+			path = KVC;
 			sourceTree = "<group>";
 		};
 		82C037A824BE959B0011A5F2 /* Block */ = {
@@ -357,8 +380,11 @@
 				820E14D5249B3D1200B78CAB /* AppDelegate.m in Sources */,
 				820E14E6249B3D1400B78CAB /* main.m in Sources */,
 				82C037DF24C989DB0011A5F2 /* MOView.m in Sources */,
+				8269E0D824F63B04004973E1 /* MOResponderViewController.m in Sources */,
 				E08C8B7424B9C24F00334253 /* SceneDelegate.m in Sources */,
+				8269E0D524F61157004973E1 /* MOArrayDataSource.m in Sources */,
 				E08C8B6E24B9BC4C00334253 /* NSTimer+MOBlock.m in Sources */,
+				8269E0DE24F64C79004973E1 /* MOKVCViewController.m in Sources */,
 				8219811324BC0AFD00C8E29B /* YYWeakProxy.m in Sources */,
 				82C037C424BED6250011A5F2 /* MOAnimal+Sleep.m in Sources */,
 				E08C8B7124B9BD8E00334253 /* MOHomeViewController.m in Sources */,
