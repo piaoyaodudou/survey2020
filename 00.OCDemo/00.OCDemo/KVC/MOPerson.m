@@ -44,15 +44,19 @@
 
 #pragma mark - 2. 数组访问器 (Array accessor)
 // 创建一个Array，遍历 index: 0->countOfName，调用 objectInNameAtIndex:index, 并把结果存入Array中
-//- (NSUInteger)countOfName { // 调用两次: why?
-//  NSLog(@"%s", __func__);
-//  return self.names.count;
-//}
+- (NSUInteger)countOfName { // 调用两次: why?
+  NSLog(@"%s", __func__);
+  return self.names.count;
+}
 
-//- (id)objectInNameAtIndex:(NSUInteger)index {
-//  NSLog(@"%s", __func__);
-//  return self.names[index];
-//}
+- (id)objectInNameAtIndex:(NSUInteger)index {
+  NSLog(@"%s", __func__);
+  return self.names[index];
+}
+- (NSArray *)namesAtIndexes:(NSIndexSet *)indexes {
+  NSLog(@"%s", __func__);
+  return [self.names objectsAtIndexes:indexes];
+}
 
 #pragma mark - 3. 集合访问器 (Collection accessor)
 //- (id)enumeratorOfName { // 返回的是一个 NSEnumerator 类型的对象
@@ -118,9 +122,27 @@
   NSLog(@"Error: setValue:%@ forUndefinedKey: %@", value, key);
 }
 
-//- (BOOL)validateName:(id *)name error:(NSError **)error {
-//  NSLog(@"%s", __func__);
-//  return YES;
-//}
+- (void)setNilValueForKey:(NSString *)key {
+  NSLog(@"%s key: %@", __func__, key);
+  if ([key isEqualToString:@"hidden"]) {
+    [self setValue:@(NO) forKey:@"hidden"];
+  } else {
+    [super setNilValueForKey:key];
+  }
+}
+
+- (BOOL)validateName:(id *)ioValue error:(NSError * __autoreleasing *)outError {
+  NSLog(@"%s", __func__);
+  if ((*ioValue == nil) || ([(NSString *)*ioValue length] < 2)) {
+    if (outError != NULL) {
+      *outError = [NSError errorWithDomain:[NSString stringWithFormat:@"can't set %@ to name", *ioValue]
+                                      code:1
+                                  userInfo:@{ NSLocalizedDescriptionKey
+                                              : @"Name too short" }];
+    }
+    return NO;
+  }
+  return YES;
+}
 
 @end

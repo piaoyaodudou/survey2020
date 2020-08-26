@@ -23,7 +23,6 @@
 		82C037BB24BEB5DD0011A5F2 /* MOAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BA24BEB5DD0011A5F2 /* MOAnimal.m */; };
 		82C037BE24BED0250011A5F2 /* MOCat.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037BD24BED0250011A5F2 /* MOCat.m */; };
 		82C037C424BED6250011A5F2 /* MOAnimal+Sleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */; };
-		82C037DF24C989DB0011A5F2 /* MOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C037DE24C989DB0011A5F2 /* MOView.m */; };
 		E015A00224F544F6004F1711 /* MOPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = E015A00124F544F6004F1711 /* MOPerson.m */; };
 		E060ADCD24C865C2005F0336 /* MOButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E060ADCC24C865C2005F0336 /* MOButton.m */; };
 		E08C8B6B24B9BBBC00334253 /* MOTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08C8B6A24B9BBBC00334253 /* MOTimerViewController.m */; };
@@ -82,8 +81,6 @@
 		82C037BD24BED0250011A5F2 /* MOCat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOCat.m; sourceTree = "<group>"; };
 		82C037C224BED6250011A5F2 /* MOAnimal+Sleep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MOAnimal+Sleep.h"; sourceTree = "<group>"; };
 		82C037C324BED6250011A5F2 /* MOAnimal+Sleep.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MOAnimal+Sleep.m"; sourceTree = "<group>"; };
-		82C037DD24C989DB0011A5F2 /* MOView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOView.h; sourceTree = "<group>"; };
-		82C037DE24C989DB0011A5F2 /* MOView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOView.m; sourceTree = "<group>"; };
 		E015A00024F544F6004F1711 /* MOPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOPerson.h; sourceTree = "<group>"; };
 		E015A00124F544F6004F1711 /* MOPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOPerson.m; sourceTree = "<group>"; };
 		E060ADCB24C865C2005F0336 /* MOButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOButton.h; sourceTree = "<group>"; };
@@ -159,8 +156,6 @@
 				E08C8B7024B9BD8E00334253 /* MOHomeViewController.m */,
 				8269E0D324F61157004973E1 /* MOArrayDataSource.h */,
 				8269E0D424F61157004973E1 /* MOArrayDataSource.m */,
-				82C037DD24C989DB0011A5F2 /* MOView.h */,
-				82C037DE24C989DB0011A5F2 /* MOView.m */,
 				E060ADCB24C865C2005F0336 /* MOButton.h */,
 				E060ADCC24C865C2005F0336 /* MOButton.m */,
 				820E14DC249B3D1200B78CAB /* Main.storyboard */,
@@ -379,7 +374,6 @@
 			files = (
 				820E14D5249B3D1200B78CAB /* AppDelegate.m in Sources */,
 				820E14E6249B3D1400B78CAB /* main.m in Sources */,
-				82C037DF24C989DB0011A5F2 /* MOView.m in Sources */,
 				8269E0D824F63B04004973E1 /* MOResponderViewController.m in Sources */,
 				E08C8B7424B9C24F00334253 /* SceneDelegate.m in Sources */,
 				8269E0D524F61157004973E1 /* MOArrayDataSource.m in Sources */,

@@ -34,11 +34,11 @@ typedef struct {
   // setValue:forUnderfinedKey:
   // setNilValueForKey: 对非类对象属性设置nil时调用，默认抛出异常。
   
-//  [self setGet]; // 1. 访问对象属性
+  [self setGet]; // 1. 访问对象属性
 //  [self collection]; // 2. 访问集合属性
 //  [self useOperators]; // 3. 使用集合运算符
 //  [self wrapUnwrap]; // 4. 包装和解包
-  [self validation]; // 5. 属性验证 (Validating Properties)
+//  [self validation]; // 5. 属性验证 (Validating Properties)
 //  [self testAccess]; // 6. 测试访问顺序 (Access Order)
 }
 
@@ -46,16 +46,17 @@ typedef struct {
 - (void)setGet {
   // getter
   MOPerson *person = [MOPerson personWithName:@"momo"];
-  [person valueForKey:@"hobby"];
-  [person valueForKeyPath:@"father.name"];
-  NSDictionary *dic = [person dictionaryWithValuesForKeys:@[@"name", @"hobby"]];
-  NSLog(@"%@", dic);
+  [person valueForKey:@"name"];
+//  [person valueForKeyPath:@"father.name"];
+//  NSDictionary *dic = [person dictionaryWithValuesForKeys:@[@"name", @"hobby"]];
+//  NSLog(@"%@", dic);
 
   // setter
-  [person setValue:nil forKey:@"name"];
-  [person setValue:nil forKeyPath:@"father.name"];
-  [person setValuesForKeysWithDictionary:@{@"name":@"kiki", @"hobby":@"唱歌"}];
-  NSLog(@"%@", dic);
+//  [person setValue:nil forKey:@"name"];
+//  [person setValue:nil forKey:@"hidden"];
+//  [person setValue:nil forKeyPath:@"father.name"];
+//  [person setValuesForKeysWithDictionary:@{@"name":@"kiki", @"hobby":@"唱歌"}];
+//  NSLog(@"%@", dic);
 }
 
 #pragma mark - 2. 访问集合属性
@@ -138,12 +139,19 @@ typedef struct {
   // 3) 无效, 但是创建一个新的可以有效作为替换的参数, 方法返回 YES, 同时保持错误对象不变。在返回之前，该方法修改值引用以指向新值对象。当它进行修改值时，该方法总是创建一个新对象，而不是修改旧对象，即使值对象是可变的。
   MOPerson *person = [MOPerson personWithName:@"momo"];
   NSError *error;
-  NSString *name = nil;//@"John";
-  NSLog(@"%i", [person validateValue:&name forKey:@"hobby" error:&error]);
+  NSString *name = @"J";
+  // validateValue: forKey:
+  // validateValue: forKeyPath:
   // 返回一个bool, 表示 给定的参数(value)针对于属性(key)是否有效
-  if ([person validateValue:&name forKey:@"name" error:&error]) {
-    NSLog(@"%@", error);
-  }
+  NSLog(@"forKey: %i", [person validateValue:&name forKey:@"name" error:&error]);
+  NSLog(@"forKey: error %@", error);
+
+  NSLog(@"forKeyPath: %i", [person validateValue:&name forKeyPath:@"father.name" error:&error]);
+  NSLog(@"forKeyPath: error %@", error);
+  
+//  if ([person validateValue:&name forKey:@"name" error:&error]) {
+//    NSLog(@"%@", error);
+//  }
   // 注意: 永远不要在 set<Key>: 方法中调用 Validating Properties 中描述的验证方法.
 }
 
