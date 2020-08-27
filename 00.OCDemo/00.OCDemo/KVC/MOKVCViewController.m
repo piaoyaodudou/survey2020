@@ -45,14 +45,14 @@ typedef struct {
 #pragma mark - 1. 访问对象属性
 - (void)setGet {
   // getter
-  MOPerson *person = [MOPerson personWithName:@"momo"];
-  [person valueForKey:@"name"];
+  MOPerson *person = [[MOPerson alloc] init];
+//  NSLog(@"%@ %@", [[person valueForKey:@"name"] class], [person valueForKey:@"name"]);
 //  [person valueForKeyPath:@"father.name"];
 //  NSDictionary *dic = [person dictionaryWithValuesForKeys:@[@"name", @"hobby"]];
 //  NSLog(@"%@", dic);
 
   // setter
-//  [person setValue:nil forKey:@"name"];
+  [person setValue:@"momo" forKey:@"name"];
 //  [person setValue:nil forKey:@"hidden"];
 //  [person setValue:nil forKeyPath:@"father.name"];
 //  [person setValuesForKeysWithDictionary:@{@"name":@"kiki", @"hobby":@"唱歌"}];
@@ -138,16 +138,26 @@ typedef struct {
   // 2) 无效返回NO, 且会将 error 指针指向 NSError 对象指示失败的原因.
   // 3) 无效, 但是创建一个新的可以有效作为替换的参数, 方法返回 YES, 同时保持错误对象不变。在返回之前，该方法修改值引用以指向新值对象。当它进行修改值时，该方法总是创建一个新对象，而不是修改旧对象，即使值对象是可变的。
   MOPerson *person = [MOPerson personWithName:@"momo"];
-  NSError *error;
+  NSError *error = nil;
   NSString *name = @"J";
   // validateValue: forKey:
   // validateValue: forKeyPath:
   // 返回一个bool, 表示 给定的参数(value)针对于属性(key)是否有效
-  NSLog(@"forKey: %i", [person validateValue:&name forKey:@"name" error:&error]);
-  NSLog(@"forKey: error %@", error);
+//  NSLog(@"forKey: name %i", [person validateValue:&name forKey:@"name" error:&error]);
+//  NSLog(@"forKey: error %@", error);
 
-  NSLog(@"forKeyPath: %i", [person validateValue:&name forKeyPath:@"father.name" error:&error]);
-  NSLog(@"forKeyPath: error %@", error);
+  NSNumber *age = @(-1);
+  error = nil;
+  NSLog(@"forKey: age %i", [person validateValue:&age forKey:@"age" error:&error]);
+  if (error != nil) {
+    NSLog(@"forKey: error %@", error);
+  }
+  NSLog(@"age: %@", person.age);
+  
+//  error = nil;
+//  NSLog(@"forKeyPath: father.name %i", [person validateValue:&name forKeyPath:@"father.name" error:&error]);
+//  NSLog(@"forKeyPath: error %@", error);
+  
   
 //  if ([person validateValue:&name forKey:@"name" error:&error]) {
 //    NSLog(@"%@", error);

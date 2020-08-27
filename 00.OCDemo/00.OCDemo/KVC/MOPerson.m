@@ -26,17 +26,14 @@
 //  NSLog(@"%s", __func__);
 //  return @"getName";
 //}
-
 //- (NSString *)name {
 //  NSLog(@"%s", __func__);
 //  return @"name";
 //}
-
 //- (NSString *)isName {
 //  NSLog(@"%s", __func__);
 //  return @"isName";
 //}
-
 //- (NSString *)_name {
 //  NSLog(@"%s", __func__);
 //  return @"_name";
@@ -48,22 +45,26 @@
   NSLog(@"%s", __func__);
   return self.names.count;
 }
-
-- (id)objectInNameAtIndex:(NSUInteger)index {
-  NSLog(@"%s", __func__);
-  return self.names[index];
-}
-- (NSArray *)namesAtIndexes:(NSIndexSet *)indexes {
-  NSLog(@"%s", __func__);
-  return [self.names objectsAtIndexes:indexes];
-}
+//- (id)objectInNameAtIndex:(NSUInteger)index {
+//  NSLog(@"%s", __func__);
+//  return self.names[index];
+//}
+//- (NSArray *)nameAtIndexes:(NSIndexSet *)indexes {
+//  NSLog(@"%s", __func__);
+//  return [self.names objectsAtIndexes:indexes];
+//}
+//// 可选, 实现了, 可以提高性能
+//- (void)getName:(NSString * __unsafe_unretained *)name range:(NSRange)inRange {
+//  NSLog(@"%s", __func__);
+//  [self.names getObjects:name range:inRange];
+//}
 
 #pragma mark - 3. 集合访问器 (Collection accessor)
 //- (id)enumeratorOfName { // 返回的是一个 NSEnumerator 类型的对象
 //  NSLog(@"%s", __func__);
 //  return [self.names reverseObjectEnumerator];
 //}
-// set里的member方法是：在set里用 isEqual: 方法查找，euqal的对象返回set里的对象，否则返回nil
+//// set里的member方法是：在set里用 isEqual: 方法查找，euqal的对象返回set里的对象，否则返回nil
 //- (id)memberOfName:(id)object {
 //  NSLog(@"%s", __func__);
 //  NSUInteger index = [self.names indexOfObject:object];
@@ -73,6 +74,7 @@
 //  return nil;
 //}
 
+#pragma mark - 4. 直接访问成员变量 (Directly access)
 //+ (BOOL)accessInstanceVariablesDirectly {
 //  return YES;
 //}
@@ -82,11 +84,9 @@
 //- (void)setName:(NSString *)name {
 //  NSLog(@"%s", __func__);
 //}
-
 //- (void)_setName:(NSString *)name {
 //  NSLog(@"%s", __func__);
 //}
-
 //- (void)setIsName:(NSString *)name {
 //  NSLog(@"%s", __func__);
 //}
@@ -118,31 +118,57 @@
   return nil;
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-  NSLog(@"Error: setValue:%@ forUndefinedKey: %@", value, key);
-}
+//- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+//  NSLog(@"Error: setValue:%@ forUndefinedKey: %@", value, key);
+//}
 
-- (void)setNilValueForKey:(NSString *)key {
-  NSLog(@"%s key: %@", __func__, key);
-  if ([key isEqualToString:@"hidden"]) {
-    [self setValue:@(NO) forKey:@"hidden"];
-  } else {
-    [super setNilValueForKey:key];
-  }
-}
+//- (void)setNilValueForKey:(NSString *)key {
+//  NSLog(@"%s key: %@", __func__, key);
+//  if ([key isEqualToString:@"hidden"]) {
+//    [self setValue:@(NO) forKey:@"hidden"];
+//  } else {
+//    [super setNilValueForKey:key];
+//  }
+//}
 
-- (BOOL)validateName:(id *)ioValue error:(NSError * __autoreleasing *)outError {
-  NSLog(@"%s", __func__);
-  if ((*ioValue == nil) || ([(NSString *)*ioValue length] < 2)) {
-    if (outError != NULL) {
-      *outError = [NSError errorWithDomain:[NSString stringWithFormat:@"can't set %@ to name", *ioValue]
-                                      code:1
-                                  userInfo:@{ NSLocalizedDescriptionKey
-                                              : @"Name too short" }];
-    }
-    return NO;
-  }
-  return YES;
-}
+// 如果有实现改方法, 则特定的 validateKey 方法不会触发
+//- (BOOL)validateValue:(inout id  _Nullable __autoreleasing *)ioValue forKey:(NSString *)inKey error:(out NSError *__autoreleasing  _Nullable *)outError {
+//  NSLog(@"%s", __func__);
+//  NSLog(@"validateValue: %@ %@", (NSString *)*ioValue, inKey);
+//  return YES;
+//}
+
+//- (BOOL)validateName:(id *)ioValue error:(NSError * __autoreleasing *)outError {
+//  NSLog(@"%s", __func__);
+//  if ((*ioValue == nil) || ([(NSString *)*ioValue length] < 2)) {
+//    if (outError != NULL) { // 尝试set error之前，记得判空
+//      *outError = [NSError errorWithDomain:[NSString stringWithFormat:@"can't set %@ to name", *ioValue]
+//                                      code:1
+//                                  userInfo:@{ NSLocalizedDescriptionKey
+//                                              : @"Name too short" }];
+//    }
+//    return NO;
+//  }
+//  return YES;
+//}
+
+//- (BOOL)validateAge:(id *)ioValue error:(NSError * __autoreleasing *)outError {
+//  NSLog(@"validateAge: %@", (NSString *)*ioValue);
+//  // When the value object isn’t valid, but you know of a valid alternative, create the valid object, assign the value reference to the new object (当value无效, 而你有知道 一个有效的选择时: 创建一个有效对象, 并指定给新对象 ？？)
+//  if (*ioValue == nil) {
+//    // Value is nil: Might also handle in setNilValueForKey
+//    *ioValue = @(0);
+//  } else
+//    if ([*ioValue floatValue] < 0.0) {
+//    if (outError != NULL) {
+//      *outError = [NSError errorWithDomain:[NSString stringWithFormat:@"can't set %@ to age", *ioValue]
+//                                      code:2
+//                                  userInfo:@{ NSLocalizedDescriptionKey
+//                                              : @"Age cannot be negative" }];
+//    }
+//    return NO;
+//  }
+//  return YES;
+//}
 
 @end
