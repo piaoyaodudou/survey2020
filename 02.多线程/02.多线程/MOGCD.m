@@ -33,13 +33,13 @@ static dispatch_queue_t current_file_queue() {
   self = [super init];
   if (self) {
     // 异步
-//    [self asyncGlobal];     // 异步-全局并发: 开启多个线程，并发执行，不阻塞
-//    [self asyncConcurrent]; // 异步-并发: 开启多个线程，并发执行，不阻塞
+//    [self asyncGlobal];     // 异步-全局并行: 开启多个线程，并发执行，不阻塞
+//    [self asyncConcurrent]; // 异步-并行: 开启多个线程，并发执行，不阻塞
 //    [self asyncMain];       // 异步-主串行: 主线程中，顺序执行，不阻塞
 //    [self asyncSerial];     // 异步-串行: 开启一个线程，顺序执行，不阻塞
      // 同步
-//    [self syncGlobal];      // 同步-全局并发: 在主线程中，顺序执行，阻塞
-//    [self syncConcurrent];  // 同步-并发: 在主线程中，顺序执行，阻塞
+//    [self syncGlobal];      // 同步-全局并行: 在主线程中，顺序执行，阻塞
+    [self syncConcurrent];  // 同步-并行: 在主线程中，顺序执行，阻塞
 //    [self syncMain];        // 同步-主串行: 死锁，阻塞
 //    [self syncSerial];      // 同步-串行: 主线程中，顺序执行，阻塞
     // 同步函数不具备开启线程的能力，无论是什么队列都不会开启线程；
@@ -49,7 +49,7 @@ static dispatch_queue_t current_file_queue() {
     // 方法1：notify
   //  [self multipleNetwork1];
     // 方法2：enter leave
-    [self multipleNetwork2];
+//    [self multipleNetwork2];
     
     // 需求：waiting多个异步顺序执行 semaphore
   //  [self multipleNetwork3];
@@ -71,7 +71,7 @@ static dispatch_queue_t current_file_queue() {
   return self;
 }
 
-#pragma mark - 异步-全局并发: 开启多个线程，并发执行，不阻塞
+#pragma mark - 异步-全局并行: 开启多个线程，并发执行，不阻塞
 - (void)asyncGlobal {
   // 开启多个线程，并发执行，不阻塞
   dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -93,7 +93,7 @@ static dispatch_queue_t current_file_queue() {
   });
   NSLog(@"是否阻塞主线程"); // 不会
 }
-#pragma mark - 异步-并发: 开启多个线程，并发执行，不阻塞
+#pragma mark - 异步-并行: 开启多个线程，并发执行，不阻塞
 - (void)asyncConcurrent {
   // 开启多个线程，并发执行，不阻塞
   dispatch_queue_t queue = dispatch_queue_create("moxiaoyan", DISPATCH_QUEUE_CONCURRENT);
@@ -157,7 +157,7 @@ static dispatch_queue_t current_file_queue() {
   NSLog(@"是否阻塞主线程"); // 不会
 }
 
-#pragma mark - 同步-全局并发: 在主线程中，顺序执行，阻塞
+#pragma mark - 同步-全局并行: 在主线程中，顺序执行，阻塞
 - (void)syncGlobal {
   // 在主线程中，顺序执行，阻塞
   // (如果用async加入，不会跟sync的在一个线程里)
@@ -179,7 +179,7 @@ static dispatch_queue_t current_file_queue() {
   });
   NSLog(@"是否阻塞主线程"); // 不会
 }
-#pragma mark - 同步-并发：在主线程中，顺序执行，阻塞
+#pragma mark - 同步-并行：在主线程中，顺序执行，阻塞
 - (void)syncConcurrent {
   // 在主线程中，顺序执行，阻塞
   dispatch_queue_t queue = dispatch_queue_create("moxiaoyan", DISPATCH_QUEUE_CONCURRENT);
@@ -188,11 +188,13 @@ static dispatch_queue_t current_file_queue() {
     sleep(2);
     NSLog(@"完成1：%@", [NSThread currentThread]);
   });
+  NSLog(@"间隙1");
   dispatch_sync(queue, ^{
     NSLog(@"执行2：%@", [NSThread currentThread]);
     sleep(3);
     NSLog(@"完成2：%@", [NSThread currentThread]);
   });
+  NSLog(@"间隙2");
   dispatch_sync(queue, ^{
     NSLog(@"执行3：%@", [NSThread currentThread]);
     sleep(1);

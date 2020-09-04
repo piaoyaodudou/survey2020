@@ -111,7 +111,7 @@ typedef struct {
   NSArray *uniChilds = [self.persons valueForKeyPath:@"@unionOfArrays.childens"];
   NSLog(@"uniChilds: %@", uniChilds);
 
-  // @distinctUnionOfSets: 和@distinctUnionOfArrays类似。因为Set本身就不支持重复
+//   @distinctUnionOfSets: 和@distinctUnionOfArrays类似。因为Set本身就不支持重复
   
   // 补充一下：Array的KVC还能这样用：
   NSArray *arrStrs = @[@"english", @"franch", @"chinese"];

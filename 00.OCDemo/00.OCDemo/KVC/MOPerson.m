@@ -118,9 +118,9 @@
   return nil;
 }
 
-//- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-//  NSLog(@"Error: setValue:%@ forUndefinedKey: %@", value, key);
-//}
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+  NSLog(@"Error: setValue:%@ forUndefinedKey: %@", value, key);
+}
 
 //- (void)setNilValueForKey:(NSString *)key {
 //  NSLog(@"%s key: %@", __func__, key);

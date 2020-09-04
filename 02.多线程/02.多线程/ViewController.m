@@ -37,8 +37,8 @@
   // 底层是Pthread，基于C实现
   
 //  [MOGCD shareInstance];
-//  [MOOperationQueue shareInstance];
-  [MONSThread shareInstance];
+  [MOOperationQueue shareInstance];
+//  [MONSThread shareInstance];
 
 }
 @end

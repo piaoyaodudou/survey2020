@@ -43,8 +43,8 @@
     [operation start];
     NSLog(@"是否阻塞主线程"); // 会
     // 可以设置特殊的先后执行顺序：addDependency
-    [operation2 addDependency:operation1]; // 添加依赖
-    [operation3 removeDependency:operation1]; // 移除依赖
+//    [operation2 addDependency:operation1]; // 添加依赖
+//    [operation3 removeDependency:operation1]; // 移除依赖
 
     [operation start];  // NSInvocationOperation alloc init 创建的需要手动开启
     [operation cancel]; // 取消单个任务，只会对还未执行的任务有效
@@ -86,9 +86,9 @@
     NSLog(@"是否阻塞主线程"); // 会
     
     // 3.NSOperationQueue
-    // NSOperationQueue 操作队列，管理Operation对象，根据Operation开辟适量的线程
+    // NSOperationQueue 创建队列，管理Operation对象，根据Operation开辟适量的线程
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    // 设置最大并发数: 1:同步 >=2:异步  默认:-1(无穷大)
+    // 设置最大并发数: 1:串行 >=2:并行  默认:-1(无穷大)
     // 注意：设置的是队列里面最多能并发运行的操作任务个数，而不是线程个数, (另外开启线程的数量是由系统决定的，所以这个值具体表示什么？)
     [queue setMaxConcurrentOperationCount:2];
     // 将任务添加到队列中
