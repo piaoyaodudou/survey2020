@@ -39,7 +39,7 @@ static dispatch_queue_t current_file_queue() {
 //    [self asyncSerial];     // 异步-串行: 开启一个线程，顺序执行，不阻塞
      // 同步
 //    [self syncGlobal];      // 同步-全局并行: 在主线程中，顺序执行，阻塞
-    [self syncConcurrent];  // 同步-并行: 在主线程中，顺序执行，阻塞
+//    [self syncConcurrent];  // 同步-并行: 在主线程中，顺序执行，阻塞
 //    [self syncMain];        // 同步-主串行: 死锁，阻塞
 //    [self syncSerial];      // 同步-串行: 主线程中，顺序执行，阻塞
     // 同步函数不具备开启线程的能力，无论是什么队列都不会开启线程；
@@ -67,6 +67,7 @@ static dispatch_queue_t current_file_queue() {
     // 参考3：https://www.cnblogs.com/yajunLi/p/6274282.html
     
   //  [self apply];
+    [self maxConcurrent]; // 用信号量控制并行线程数量
   }
   return self;
 }
@@ -451,5 +452,20 @@ static dispatch_queue_t current_file_queue() {
   NSLog(@"是否阻塞主线程 dispatch_apply"); // 会
 }
 
+
+- (void)maxConcurrent {
+  // 使用信号量来控制最大并发数(<0阻塞，>0执行)
+  dispatch_queue_t concurrentQueue = dispatch_queue_create("moxiaoyan", DISPATCH_QUEUE_CONCURRENT);
+  dispatch_semaphore_t semaphore = dispatch_semaphore_create(3);
+  for (NSInteger i = 0; i < 10; i++) {
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_async(concurrentQueue, ^{
+      NSLog(@"start %ld, %@", (long)i, [NSThread currentThread]);
+      sleep(1);
+      NSLog(@"end %ld, %@", (long)i, [NSThread currentThread]);
+      dispatch_semaphore_signal(semaphore);
+    });
+  }
+}
 
 @end

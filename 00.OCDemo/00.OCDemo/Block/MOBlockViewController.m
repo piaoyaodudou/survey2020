@@ -45,11 +45,11 @@ int globalCount = 0;
   // OC对象: 使用or修改 都不需要 __block 修饰
 //  MOPerson *obj = [MOPerson new];
 
-//  __block NSMutableArray *arr = [NSMutableArray array];
+  __block NSMutableArray *arr = [NSMutableArray array];
   // __block 修饰后，会创建一个 __Block_byref_***_0 的结构体，将变量声明为这个结构体的对象
   // 将此对象的指针拷贝到 block的结构体 中使用
   
-  __weak typeof(self) weakSelf = self;
+//  __weak typeof(self) weakSelf = self;
   
   
   void (^MyBlock)(void) = ^{
@@ -59,17 +59,18 @@ int globalCount = 0;
 //    NSLog(@"%d", blockCount); // 拷贝指针
 
     //    NSLog(@"%@", obj.name);
-    NSLog(@"%@", weakSelf.delegate);
+//    NSLog(@"%@", weakSelf.delegate);
 //    arr = [NSMutableArray array];
-//    [arr addObject:@"1"];
+    [arr addObject:@"1"];
 //    NSLog(@"%@", arr);
     
   };
+  MyBlock();
 //  count = 1;
 //  blockCount = 1;
 //  obj.name = @"momo";
 //  [MyBlock copy];
-  NSLog(@"%@", [MyBlock class]);
+//  NSLog(@"%@", [MyBlock class]);
 }
 
 @end

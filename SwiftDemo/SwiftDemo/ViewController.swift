@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     title = "SwiftDemo"
     self.setupTableView()
   }
-  
   func setupTableView() {
     let section0 = [MOCellModel("UITableViewStyle", "MOTableViewStyleVC"),
                     MOCellModel("WKWebView与JS交互", "MOWKWebViewController"),

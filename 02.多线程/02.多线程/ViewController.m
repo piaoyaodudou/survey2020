@@ -36,8 +36,8 @@
   // 缺点：非线程安全，需要加锁，性能低；需要管理生命周期；
   // 底层是Pthread，基于C实现
   
-//  [MOGCD shareInstance];
-  [MOOperationQueue shareInstance];
+  [MOGCD shareInstance];
+//  [MOOperationQueue shareInstance];
 //  [MONSThread shareInstance];
 
 }

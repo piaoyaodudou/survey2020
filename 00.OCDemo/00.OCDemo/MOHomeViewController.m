@@ -38,15 +38,12 @@
   [super viewDidLoad];
   self.title = @"OC-Demo";
   [self setupView];
-  
-  [self.navigationController pushViewController:[MOKVCViewController new] animated:YES];
-
+  [self someMethod];
 }
 
 - (void)someMethod {
-
+  
 }
-
 - (void)setupView {
   NSArray *section1 = @[[MOCellModel modelWithTitle:@"Responder" vcName:@"MOResponderViewController"],
                         [MOCellModel modelWithTitle:@"Timer Demo" vcName:@"MOTimerViewController"],

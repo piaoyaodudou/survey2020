@@ -23,7 +23,12 @@ int main(int argc, char * argv[]) {
   @autoreleasepool {
       // Setup code that might create autoreleased objects goes here.
 //      appDelegateClassName = NSStringFromClass([AppDelegate class]);
-    id __strong obj = [MyClass myClass];
+//    id __strong obj = [MyClass myClass];
+    __block NSMutableArray *arr = [NSMutableArray array];
+      void (^MyBlock)(void) = ^{
+        [arr addObject:@"1"];
+      };
+      MyBlock();
   }
   return UIApplicationMain(argc, argv, nil, appDelegateClassName);
 }
