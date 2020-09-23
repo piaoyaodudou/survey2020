@@ -44,6 +44,7 @@
 - (void)someMethod {
   
 }
+
 - (void)setupView {
   NSArray *section1 = @[[MOCellModel modelWithTitle:@"Responder" vcName:@"MOResponderViewController"],
                         [MOCellModel modelWithTitle:@"Timer Demo" vcName:@"MOTimerViewController"],
