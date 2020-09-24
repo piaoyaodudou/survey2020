@@ -13,12 +13,13 @@ let insets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeIns
 
 class ViewController: UIViewController {
   var dataSource: MOArrayDataSource?
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "SwiftDemo"
     self.setupTableView()
 //    print(isFlipedString("aa", "aba"))
+    test()
   }
   func setupTableView() {
     let section0 = [MOCellModel("UITableViewStyle", "MOTableViewStyleVC"),

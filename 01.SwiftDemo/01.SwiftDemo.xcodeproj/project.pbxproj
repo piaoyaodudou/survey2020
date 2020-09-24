@@ -20,6 +20,7 @@
 		82A51D4C24EFB675003D2B00 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 82A51D4B24EFB675003D2B00 /* index.html */; };
 		82A51D4E24EFBAAD003D2B00 /* MOShareDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A51D4D24EFBAAD003D2B00 /* MOShareDocumentVC.swift */; };
 		82A51D5624EFD0FE003D2B00 /* MOFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A51D5524EFD0FE003D2B00 /* MOFileManager.swift */; };
+		82DB60D0251C2907007784F3 /* MOAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB60CF251C2907007784F3 /* MOAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		82A51D4B24EFB675003D2B00 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		82A51D4D24EFBAAD003D2B00 /* MOShareDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOShareDocumentVC.swift; sourceTree = "<group>"; };
 		82A51D5524EFD0FE003D2B00 /* MOFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOFileManager.swift; sourceTree = "<group>"; };
+		82DB60CF251C2907007784F3 /* MOAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				82A51D4924EFB60B003D2B00 /* MOWKWebViewController.swift */,
 				82A51D4D24EFBAAD003D2B00 /* MOShareDocumentVC.swift */,
 				82A51D5524EFD0FE003D2B00 /* MOFileManager.swift */,
+				82DB60CF251C2907007784F3 /* MOAlgorithm.swift */,
 				82A51D4B24EFB675003D2B00 /* index.html */,
 				82A51D3124EF9C90003D2B00 /* Main.storyboard */,
 				82A51D3424EF9C92003D2B00 /* Assets.xcassets */,
@@ -163,6 +166,7 @@
 				82A51D4824EFB42F003D2B00 /* MOTableViewStyleVC.swift in Sources */,
 				82A51D4E24EFBAAD003D2B00 /* MOShareDocumentVC.swift in Sources */,
 				82A51D4424EFAB54003D2B00 /* MOCellModel.swift in Sources */,
+				82DB60D0251C2907007784F3 /* MOAlgorithm.swift in Sources */,
 				82A51D4A24EFB60B003D2B00 /* MOWKWebViewController.swift in Sources */,
 				82A51D4224EF9D8D003D2B00 /* MOArrayDataSource.swift in Sources */,
 				82A51D5624EFD0FE003D2B00 /* MOFileManager.swift in Sources */,
