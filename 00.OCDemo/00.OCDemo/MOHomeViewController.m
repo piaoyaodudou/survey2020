@@ -17,6 +17,16 @@
 #import <objc/runtime.h>
 #import "MOArrayDataSource.h"
 
+@interface Person : NSObject
+@property (nonatomic, strong) NSString *name;
+- (void)test;
+@end
+@implementation Person
+- (void)test {
+    NSLog(@"test print name is : %@", self.name);
+}
+@end
+
 @interface MOHomeViewController () <UITableViewDelegate>
 //<MOAnimalDelegate, MOAnimalSleepDelegate>
 @property (nonatomic, copy) NSString *food;
@@ -38,11 +48,10 @@
   [super viewDidLoad];
   self.title = @"OC-Demo";
   [self setupView];
-  [self someMethod];
+//  [self someMethod];
 }
 
 - (void)someMethod {
-  
 }
 
 - (void)setupView {

@@ -18,44 +18,53 @@ public class ListNode {
 }
 
 func test() {
-  let l1 = creatList([5])
-  let l2 = creatList([5])
-  let res = addTwoNumbers(l1, l2)
+  let l1 = creatList([1, 2])
+//  let l2 = creatList([5])
+  let res = isPalindrome(l1)
   print(res)
 }
 
-func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-  if l1 == nil {
-    return l2
+func isPalindrome(_ head: ListNode?) -> Bool {
+  if head == nil {
+    return true
   }
-  if l2 == nil {
-    return l1
-  }
-  var l11: ListNode? = l1, l22: ListNode? = l2
-  var current: ListNode? = nil // 当前结点
-  var res: ListNode? = nil // 需要返回的头结点
-  var carry = 0 // 进位
-  while l11 != nil || l22 != nil {
-    let sum = (l11?.val ?? 0) + (l22?.val ?? 0) + carry
-    if sum >= 10 { // 判断有无进位
-      carry = sum / 10
+  let midNode: ListNode? = findMidNode(head)
+  let lastHalfHead: ListNode? = reversedLink(midNode?.next) ?? nil
+  var link1: ListNode? = head
+  var link2: ListNode? = lastHalfHead
+  
+  var res: Bool = true
+  while res && link2 != nil {
+    if link1?.val == link2?.val {
+      link1 = link1?.next
+      link2 = link2?.next
     } else {
-      carry = 0
+      res = false
     }
-    if current == nil { // 头结点
-      current = ListNode(sum % 10)
-      res = current
-    } else { // 创建next结点
-      current?.next = ListNode(sum % 10)
-      current = current?.next
-    }
-    l11 = l11?.next ?? nil
-    l22 = l22?.next ?? nil
-  }
-  if carry > 0 { // 最后如果有进位需要加一个next结点
-    current?.next = ListNode(carry)
   }
   return res
+}
+// 快慢指针找中间结点
+func findMidNode(_ head: ListNode?) -> ListNode? {
+  var slow: ListNode? = head
+  var fast: ListNode? = head
+  while fast?.next != nil && fast?.next?.next != nil {
+    fast = fast?.next?.next
+    slow = slow?.next
+  }
+  return slow
+}
+// 反转链表
+func reversedLink(_ head: ListNode?) -> ListNode? {
+  var cur: ListNode? = head
+  var pre: ListNode? = nil
+  while cur != nil {
+    let tmp = cur?.next
+    cur?.next = pre
+    pre = cur
+    cur = tmp
+  }
+  return pre
 }
 
 fileprivate func creatList(_ nums: [Int]) -> ListNode? {
