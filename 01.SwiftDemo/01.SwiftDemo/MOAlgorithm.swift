@@ -18,10 +18,50 @@ public class ListNode {
 }
 
 func test() {
-  let l1 = creatList([1, 2])
+//  let l1 = creatList([1, 2])
 //  let l2 = creatList([5])
-  let res = isPalindrome(l1)
+  let res = isValid("{[]}")
   print(res)
+}
+
+func isValid(_ s: String) -> Bool {
+  var stack = [Character]()
+  for char in s {
+    if char == "(" {
+      stack.append(")")
+    } else if char == "{" {
+      stack.append("}")
+    } else if char == "[" {
+      stack.append("]")
+    } else if stack.isEmpty {
+      return false
+    } else {
+      if (stack.last == char) {
+        stack.removeLast()
+      } else {
+        return false
+      }
+    }
+  }
+  return stack.isEmpty
+}
+
+func lengthOfLongestSubstring(_ s: String) -> Int {
+  if s.isEmpty {
+    return 0
+  }
+  var maxStr = String()
+  var curStr = String()
+  for char in s {
+    while curStr.contains(char) {
+      curStr.remove(at: curStr.startIndex)
+    }
+    curStr.append(char)
+    if curStr.count > maxStr.count {
+      maxStr = curStr
+    }
+  }
+  return maxStr.count
 }
 
 func isPalindrome(_ head: ListNode?) -> Bool {
