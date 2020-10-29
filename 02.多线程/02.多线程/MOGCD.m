@@ -38,7 +38,7 @@ static dispatch_queue_t current_file_queue() {
 //    [self asyncMain];       // 异步-主串行: 主线程中，顺序执行，不阻塞
 //    [self asyncSerial];     // 异步-串行: 开启一个线程，顺序执行，不阻塞
      // 同步
-//    [self syncGlobal];      // 同步-全局并行: 在主线程中，顺序执行，阻塞
+    [self syncGlobal];      // 同步-全局并行: 在主线程中，顺序执行，阻塞
 //    [self syncConcurrent];  // 同步-并行: 在主线程中，顺序执行，阻塞
 //    [self syncMain];        // 同步-主串行: 死锁，阻塞
 //    [self syncSerial];      // 同步-串行: 主线程中，顺序执行，阻塞
@@ -67,7 +67,7 @@ static dispatch_queue_t current_file_queue() {
     // 参考3：https://www.cnblogs.com/yajunLi/p/6274282.html
     
   //  [self apply];
-    [self maxConcurrent]; // 用信号量控制并行线程数量
+//    [self maxConcurrent]; // 用信号量控制并行线程数量
   }
   return self;
 }

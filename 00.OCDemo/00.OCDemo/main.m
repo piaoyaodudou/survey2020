@@ -18,20 +18,20 @@ int main(int argc, char * argv[]) {
       // Setup code that might create autoreleased objects goes here.
       appDelegateClassName = NSStringFromClass([AppDelegate class]);
 //    int a = 1;
-//    NSObject *obj = [[NSObject alloc] init];
-//    static NSString *indentify = @"mo";
+//    NSObject *obj = [[NSObject alloc] init]; //声明一个指针属性
+    static NSString *name = @"mo";
 //    __block int a = 1;
-    NSMutableString *str = [NSMutableString stringWithString:@"mo"];
-    NSMutableArray *arr = [NSMutableArray arrayWithArray:@[@1, @2]];
+//    NSMutableString *str = [NSMutableString stringWithString:@"mo"];
+//    NSMutableArray *arr = [NSMutableArray arrayWithArray:@[@1, @2]];
     void(^aBlock)(void) = ^{
 //      NSLog(@"Hello world"); // 1. 未捕获变量
 //      NSLog(@"%d", a);  // 2. 基本数据类型
 //      NSLog(@"%@", obj); // 3. alloc对象
-//      NSLog(@"%@", indentify); // 4. 静态局部变量
+      NSLog(@"%@", name); // 4. 静态局部变量
 //      NSLog(@"%d", ++a); // 5. __block对象
-      str.string = @"moxiaoyan";
+//      str.string = @"moxiaoyan";
 //      str = [NSMutableString stringWithString:@"moxiaoyan"];
-      [arr addObject:@3];
+//      [arr addObject:@3];
 //      arr = [NSMutableArray arrayWithArray:@[@1, @2, @3]];
     };
 //    a++;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MOButton.h"
 @class MOCellModel;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,6 +24,7 @@ typedef void(^MOConfigureCell)(UITableViewCell *cell, id model);
 @end
 
 @interface MOArrayDataSource : NSObject <UITableViewDataSource>
+@property (nonatomic, strong) MOButton *btn;
 - (instancetype)initSections:(NSArray *)sections cellIndentifier:(NSString *)cellIndentifier configureCell:(MOConfigureCell)configureCell;
 - (MOCellModel *)modelAtIndexPath:(NSIndexPath *)indexPath;
 @end

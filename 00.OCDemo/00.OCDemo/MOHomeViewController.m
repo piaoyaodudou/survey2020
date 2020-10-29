@@ -11,21 +11,10 @@
 #import "MOTimerViewController.h"
 #import "MOBlockViewController.h"
 #import "MOKVCViewController.h"
-//#import "MOCat.h"
-//#import "MOAnimal+Sleep.h"
 #import "MOButton.h"
+#import "MOPerson.h"
 #import <objc/runtime.h>
 #import "MOArrayDataSource.h"
-
-@interface Person : NSObject
-@property (nonatomic, strong) NSString *name;
-- (void)test;
-@end
-@implementation Person
-- (void)test {
-    NSLog(@"test print name is : %@", self.name);
-}
-@end
 
 @interface MOHomeViewController () <UITableViewDelegate>
 //<MOAnimalDelegate, MOAnimalSleepDelegate>
@@ -47,11 +36,18 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"OC-Demo";
-  [self setupView];
-//  [self someMethod];
+//  [self setupView];
+  [self someMethod];
 }
 
 - (void)someMethod {
+  MOPerson *p = [[MOPerson alloc] init];
+  MOButton *b = [[MOButton alloc] init];
+}
+
+- (void)method:(NSMutableArray *)arr {
+  [arr addObject:@3];
+  arr = nil;
 }
 
 - (void)setupView {

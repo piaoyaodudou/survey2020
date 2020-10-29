@@ -20,30 +20,29 @@ public class ListNode {
 func test() {
 //  let l1 = creatList([1, 2])
 //  let l2 = creatList([5])
-  let res = isValid("{[]}")
+  var arr = [0,0,1,1,1,2,2,3,3,4]
+  let res = removeDuplicates(&arr)
   print(res)
+  print(arr)
 }
 
-func isValid(_ s: String) -> Bool {
-  var stack = [Character]()
-  for char in s {
-    if char == "(" {
-      stack.append(")")
-    } else if char == "{" {
-      stack.append("}")
-    } else if char == "[" {
-      stack.append("]")
-    } else if stack.isEmpty {
-      return false
+func removeDuplicates(_ nums: inout [Int]) -> Int {
+  if nums.isEmpty {
+    return 0
+  }
+  if nums.count == 0 {
+    return 1
+  }
+  var l = 0, r = 1;
+  while r < nums.count {
+    if nums[l] == nums[r] {
+      r = r + 1
     } else {
-      if (stack.last == char) {
-        stack.removeLast()
-      } else {
-        return false
-      }
+      l = l + 1
+      nums[l] = nums[r]
     }
   }
-  return stack.isEmpty
+  return l + 1;
 }
 
 func lengthOfLongestSubstring(_ s: String) -> Int {
