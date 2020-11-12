@@ -37,8 +37,8 @@ static dispatch_queue_t current_file_queue() {
 //    [self asyncConcurrent]; // 异步-并行: 开启多个线程，并发执行，不阻塞
 //    [self asyncMain];       // 异步-主串行: 主线程中，顺序执行，不阻塞
 //    [self asyncSerial];     // 异步-串行: 开启一个线程，顺序执行，不阻塞
-     // 同步
-    [self syncGlobal];      // 同步-全局并行: 在主线程中，顺序执行，阻塞
+//    //  同步
+//    [self syncGlobal];      // 同步-全局并行: 在主线程中，顺序执行，阻塞
 //    [self syncConcurrent];  // 同步-并行: 在主线程中，顺序执行，阻塞
 //    [self syncMain];        // 同步-主串行: 死锁，阻塞
 //    [self syncSerial];      // 同步-串行: 主线程中，顺序执行，阻塞
@@ -68,9 +68,42 @@ static dispatch_queue_t current_file_queue() {
     
   //  [self apply];
 //    [self maxConcurrent]; // 用信号量控制并行线程数量
+    
+    // 希望异步加载实现同步效果
+    NSDictionary *dic = [self syncLoadDic2];
+    NSLog(@"%@", dic);
   }
   return self;
 }
+
+// 第一种：用信号量 dispatch_semaphore
+- (NSString *)syncFindDevice1 {
+  NSString __block *result;
+  dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+  [self deviceWithKey:@"mac1" result:^(NSString *value) {
+    result = value;
+    dispatch_semaphore_signal(semaphore);
+    }];
+  dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+  return result;
+}
+// 第二种：用派发组 dispatch_group
+- (NSString *)syncFindDevice2 {
+  NSString __block *result;
+  dispatch_group_t group = dispatch_group_create();
+  dispatch_group_enter(group);
+  [self deviceWithKey:@"mac1" result:^(NSString *value) {
+    result = value;
+    dispatch_group_leave(group);
+  }];
+  dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+  return result;
+}
+- (void)deviceWithKey:(NSString *)key result:(void(^)(NSString *value))complete {
+  NSDictionary *dic = @{@"mac1":@"device1"};
+  complete(dic[key]);
+}
+
 
 #pragma mark - 异步-全局并行: 开启多个线程，并发执行，不阻塞
 - (void)asyncGlobal {

@@ -16,6 +16,82 @@
 #import <objc/runtime.h>
 #import "MOArrayDataSource.h"
 
+@interface Rectangle : NSObject <NSCoding>
+// 属性声明为只读，外界就无法设置Rectangle对象的属性了，只能通过初始化方法设置
+@property (nonatomic, assign, readonly) float width;
+@property (nonatomic, assign, readonly) float height;
+- (instancetype)initWithWidth:(float)width height:(float)height NS_DESIGNATED_INITIALIZER;
+@end
+@implementation Rectangle
+#pragma mark - Designated Initializer
+- (instancetype)initWithWidth:(float)width height:(float)height {
+  self = [super init];
+  if (self) {
+    _width = width;
+    _height = height;
+  }
+  return self;
+}
+// 如果有人用父类的init方法来创建Rectangle呢？...(并不是我们想要的)
+// 所以类继承时：如果子类的全能初始化方法与父类的名称不同，那么总应覆写父类的全能初始化方法
+#pragma mark - override super Designated Initializer !!!
+- (instancetype)init {
+  return [self initWithWidth:5.0 height:5.0];
+}
+#pragma mark - Designated Initializer
+- (instancetype)initWithCoder:(NSCoder *)coder {
+  self = [super initWithCoder:coder]; // 调用父类相关DI
+  if (self) { // 再执行本类相关任务
+    _width = [coder decodeFloatForKey:@"width"];
+    _height = [coder decodeFloatForKey:@"height"];
+  }
+  // 这样写出来的类就完全遵守了NSCoding协议(fully NSCoding compliant)
+  return self;
+}
+@end
+
+@interface Square : Rectangle
+@property (nonatomic, copy) NSString *name;
+- (instancetype)initWithDimension:(float)dimension __attribute__((objc_designated_initializer)); // Designated Initializer
+- (instancetype)initWithName:(NSString *)name; // Secondary initializer
+@end
+@implementation Square
+#pragma mark - Designated Initializer
+- (instancetype)initWithDimension:(float)dimension {
+  return [super initWithWidth:dimension height:dimension];
+}
+#pragma mark - override super Designated Initializer !!!
+- (instancetype)initWithWidth:(float)width height:(float)height {
+  float dimension = MAX(width, height);
+  return [self initWithDimension:dimension];
+}
+
+#pragma mark - override super Designated Initializer !!!
+- (instancetype)init {
+  return [self initWithDimension:5.0];
+}
+#pragma mark - Designated Initializer
+- (instancetype)initWithCoder:(NSCoder *)coder {
+  self = [super initWithCoder:coder];
+  // 如果没有调用父类的同名方法，而是 自己的初始化方法/超类的其他初始化方法
+  // 那么Rectangle类的initWithCoder:就没机会执行了(就无法将_width和_height这俩实例变量解码了)
+  if (self) {
+    // Square's specific initializer
+  }
+  return self;
+}
+#pragma mark - Secondary initializer
+- (instancetype)initWithName:(NSString *)name {
+//  self = [super init]; // 不能调用父类的DI，得调用自己的DI !!!
+  self = [self initWithDimension:5.0];
+  if (self) {
+    _name = name;
+  }
+  return self;
+}
+@end
+
+
 @interface MOHomeViewController () <UITableViewDelegate>
 //<MOAnimalDelegate, MOAnimalSleepDelegate>
 @property (nonatomic, copy) NSString *food;
@@ -24,6 +100,18 @@
 @end
 
 @implementation MOHomeViewController
+
+#pragma mark - Designated Initializer
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  // 仅包含了xib里设置的数据，在初始化后会调用awakeFromNib 方法，我们需要把额外初始化动作写在这里
+}
+- (void)awakeFromNib {
+  [super awakeFromNib];
+  [self someInit];
+}
+- (void)someInit {
+  self.name = @"";
+}
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
   self = [super initWithCoder:coder];
