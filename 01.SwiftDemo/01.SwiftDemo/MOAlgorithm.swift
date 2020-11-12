@@ -20,30 +20,10 @@ public class ListNode {
 func test() {
 //  let l1 = creatList([1, 2])
 //  let l2 = creatList([5])
-  var arr = [0,0,1,1,1,2,2,3,3,4]
-  let res = removeDuplicates(&arr)
+//  let res = longestCommonPrefix(["dog","racecar","car"])
   print(res)
-  print(arr)
 }
 
-func removeDuplicates(_ nums: inout [Int]) -> Int {
-  if nums.isEmpty {
-    return 0
-  }
-  if nums.count == 0 {
-    return 1
-  }
-  var l = 0, r = 1;
-  while r < nums.count {
-    if nums[l] == nums[r] {
-      r = r + 1
-    } else {
-      l = l + 1
-      nums[l] = nums[r]
-    }
-  }
-  return l + 1;
-}
 
 func lengthOfLongestSubstring(_ s: String) -> Int {
   if s.isEmpty {
