@@ -1,6 +1,6 @@
 //
 //  MOAlgorithm.swift
-//  01.SwiftDemo
+//  SwiftDemo
 //
 //  Created by moxiaoyan on 2020/9/24.
 //  Copyright © 2020 moxiaohui. All rights reserved.
@@ -21,7 +21,7 @@ func test() {
 //  let l1 = creatList([1, 2])
 //  let l2 = creatList([5])
 //  let res = longestCommonPrefix(["dog","racecar","car"])
-  print(res)
+//  print(res)
 }
 
 

@@ -205,9 +205,7 @@ struct MOFileManager {
     guard let readHandler = FileHandle(forReadingAtPath: url.path) else {
       return
     }
-    guard let data2: Data = readHandler.readDataToEndOfFile() else {
-      return
-    }
+    let data2: Data = readHandler.readDataToEndOfFile()
     let readString2 = String(data: data2, encoding: .utf8)
     print("方法2：\(readString2 ?? "")")
   }

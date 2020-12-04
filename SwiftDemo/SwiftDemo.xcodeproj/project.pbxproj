@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		82A51D2824EF9C90003D2B00 /* 01.SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01.SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A51D2824EF9C90003D2B00 /* SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A51D2B24EF9C90003D2B00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82A51D2D24EF9C90003D2B00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		82A51D2F24EF9C90003D2B00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		82A51D1F24EF9C90003D2B00 = {
 			isa = PBXGroup;
 			children = (
-				82A51D2A24EF9C90003D2B00 /* 01.SwiftDemo */,
+				82A51D2A24EF9C90003D2B00 /* SwiftDemo */,
 				82A51D2924EF9C90003D2B00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,12 +64,12 @@
 		82A51D2924EF9C90003D2B00 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82A51D2824EF9C90003D2B00 /* 01.SwiftDemo.app */,
+				82A51D2824EF9C90003D2B00 /* SwiftDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		82A51D2A24EF9C90003D2B00 /* 01.SwiftDemo */ = {
+		82A51D2A24EF9C90003D2B00 /* SwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
 				82A51D2B24EF9C90003D2B00 /* AppDelegate.swift */,
@@ -88,15 +88,15 @@
 				82A51D3624EF9C92003D2B00 /* LaunchScreen.storyboard */,
 				82A51D3924EF9C92003D2B00 /* Info.plist */,
 			);
-			path = 01.SwiftDemo;
+			path = SwiftDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82A51D2724EF9C90003D2B00 /* 01.SwiftDemo */ = {
+		82A51D2724EF9C90003D2B00 /* SwiftDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82A51D3C24EF9C92003D2B00 /* Build configuration list for PBXNativeTarget "01.SwiftDemo" */;
+			buildConfigurationList = 82A51D3C24EF9C92003D2B00 /* Build configuration list for PBXNativeTarget "SwiftDemo" */;
 			buildPhases = (
 				82A51D2424EF9C90003D2B00 /* Sources */,
 				82A51D2524EF9C90003D2B00 /* Frameworks */,
@@ -106,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = 01.SwiftDemo;
-			productName = 01.SwiftDemo;
-			productReference = 82A51D2824EF9C90003D2B00 /* 01.SwiftDemo.app */;
+			name = SwiftDemo;
+			productName = SwiftDemo;
+			productReference = 82A51D2824EF9C90003D2B00 /* SwiftDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 82A51D2324EF9C90003D2B00 /* Build configuration list for PBXProject "01.SwiftDemo" */;
+			buildConfigurationList = 82A51D2324EF9C90003D2B00 /* Build configuration list for PBXProject "SwiftDemo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82A51D2724EF9C90003D2B00 /* 01.SwiftDemo */,
+				82A51D2724EF9C90003D2B00 /* SwiftDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -318,14 +318,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WUQQBVA6S;
-				INFOPLIST_FILE = 01.SwiftDemo/Info.plist;
+				INFOPLIST_FILE = SwiftDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "moxiaohui.-0-01.SwiftDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "moxiaohui.-0-SwiftDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -338,14 +338,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WUQQBVA6S;
-				INFOPLIST_FILE = 01.SwiftDemo/Info.plist;
+				INFOPLIST_FILE = SwiftDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "moxiaohui.-0-01.SwiftDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "moxiaohui.-0-SwiftDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -355,7 +355,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82A51D2324EF9C90003D2B00 /* Build configuration list for PBXProject "01.SwiftDemo" */ = {
+		82A51D2324EF9C90003D2B00 /* Build configuration list for PBXProject "SwiftDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A51D3A24EF9C92003D2B00 /* Debug */,
@@ -364,7 +364,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82A51D3C24EF9C92003D2B00 /* Build configuration list for PBXNativeTarget "01.SwiftDemo" */ = {
+		82A51D3C24EF9C92003D2B00 /* Build configuration list for PBXNativeTarget "SwiftDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A51D3D24EF9C92003D2B00 /* Debug */,

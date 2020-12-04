@@ -70,8 +70,8 @@ static dispatch_queue_t current_file_queue() {
 //    [self maxConcurrent]; // 用信号量控制并行线程数量
     
     // 希望异步加载实现同步效果
-    NSDictionary *dic = [self syncLoadDic2];
-    NSLog(@"%@", dic);
+//    NSDictionary *dic = [self syncLoadDic2];
+//    NSLog(@"%@", dic);
   }
   return self;
 }
