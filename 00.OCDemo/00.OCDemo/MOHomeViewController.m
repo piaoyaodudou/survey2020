@@ -39,15 +39,15 @@
   return [self initWithWidth:5.0 height:5.0];
 }
 #pragma mark - Designated Initializer
-- (instancetype)initWithCoder:(NSCoder *)coder {
-  self = [super initWithCoder:coder]; // 调用父类相关DI
-  if (self) { // 再执行本类相关任务
-    _width = [coder decodeFloatForKey:@"width"];
-    _height = [coder decodeFloatForKey:@"height"];
-  }
-  // 这样写出来的类就完全遵守了NSCoding协议(fully NSCoding compliant)
-  return self;
-}
+//- (instancetype)initWithCoder:(NSCoder *)coder {
+//  self = [super initWithCoder:coder]; // 调用父类相关DI
+//  if (self) { // 再执行本类相关任务
+//    _width = [coder decodeFloatForKey:@"width"];
+//    _height = [coder decodeFloatForKey:@"height"];
+//  }
+//  // 这样写出来的类就完全遵守了NSCoding协议(fully NSCoding compliant)
+//  return self;
+//}
 @end
 
 @interface Square : Rectangle
@@ -102,15 +102,15 @@
 @implementation MOHomeViewController
 
 #pragma mark - Designated Initializer
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  // 仅包含了xib里设置的数据，在初始化后会调用awakeFromNib 方法，我们需要把额外初始化动作写在这里
-}
+//- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+//  // 仅包含了xib里设置的数据，在初始化后会调用awakeFromNib 方法，我们需要把额外初始化动作写在这里
+//}
 - (void)awakeFromNib {
   [super awakeFromNib];
   [self someInit];
 }
 - (void)someInit {
-  self.name = @"";
+//  self.name = @"";
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -129,8 +129,19 @@
 }
 
 - (void)someMethod {
-  MOPerson *p = [[MOPerson alloc] init];
-  MOButton *b = [[MOButton alloc] init];
+//  MOPerson *p = [[MOPerson alloc] init];
+//  MOButton *b = [[MOButton alloc] init];
+//  [self performSelector:@selector(test) withObject:nil];
+  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+  dispatch_async(queue, ^{
+    [self performSelector:@selector(test) withObject:nil afterDelay:0];
+    [[NSRunLoop currentRunLoop] run];
+  });
+  NSLog(@"代码1");
+}
+
+- (void)test {
+  NSLog(@"test");
 }
 
 - (void)method:(NSMutableArray *)arr {

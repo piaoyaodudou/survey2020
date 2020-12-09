@@ -43,14 +43,14 @@ class MOArrayDataSource: NSObject, UITableViewDataSource {
     return cell
   }
   
-  // MARK: - 根据String生成ViewController
-  func classFromString(_ className: String) -> UIViewController? {
+    // MARK: - 根据String生成ViewController
+    func classFromString(_ className: String) -> UIViewController? {
     // 项目名称不能包含: 数字 - or 其他一些特殊符号, 否则转换不了
     guard let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String else {
       print("未获取到命名空间")
       return nil
     }
-    
+
     let str = "\(appName).\(className)"
     print(str)
 
@@ -64,5 +64,5 @@ class MOArrayDataSource: NSObject, UITableViewDataSource {
     }
     let vc = vcType.init()
     return vc
-  }
+    }
 }

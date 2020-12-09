@@ -30,20 +30,21 @@
   self = [super init];
   if (self) {
     // 说明
-    [self explain];
+//    [self explain];
     
     // 使用
     // 例子：
-//    [self MultiWindowTicket]; // 多窗口买票
+//    [self multiWindowTicket]; // 多窗口买票
     
-    // afterDelay在子线程中未执行
-//    [self afterDelayNowork];
+//    [self performSelector];
+//    [self afterDelayNowork];  // afterDelay在子线程中未执行
+    [self testClickAction]; // 多次点击, 只执行最后一次
   }
   return self;
 }
 
 #pragma mark - 多窗口买票
-- (void)MultiWindowTicket {
+- (void)multiWindowTicket {
   self.totalTicketCount = 8;
   _thread1 = [[NSThread alloc] initWithTarget:self selector:@selector(saleTicket) object:nil];
   _thread1.name = @"窗口1";
@@ -109,33 +110,34 @@
   @autoreleasepool {
     [NSThread detachNewThreadSelector:@selector(network:) toTarget:self withObject:@{@"name":@"moxiaohui"}];
   }
-  // 方法3：隐式创建
+  // 方法3：performSelector 隐式创建
+}
+
+#pragma mark - performSelector
+- (void)performSelector {
+  // 当前线程中执行
+  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaohui"}]; // 同步
+  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaoyan"} withObject:@{@"name":@"moxiaohui"}];  // 同步
+
   // 子线程中执行：(耗时操作)
-  [self performSelectorInBackground:@selector(network:) withObject:@{@"name":@"moxiaohui"}];
+  [self performSelectorInBackground:@selector(network:) withObject:@{@"name":@"moxiaohui"}]; // 异步
   // 主线程中执行：(执行更新UI之类得操作)
   [self performSelectorOnMainThread:@selector(complete) withObject:nil waitUntilDone:YES];
+  // waitUntilDone: 表示后面代码是否需要等待当前方法执行完毕
+  // YES: 同步，test执行完，后面的代码才执行
+  // NO: 异步，后面的代码先执行(哪怕比较费时)，test后执行
+  NSLog(@"sleep 2 s");
+  sleep(2);
+  NSLog(@"3");
   // 指定线程中执行
   [self performSelector:@selector(network:) onThread:[NSThread mainThread] withObject:@{@"name":@"moxiaohui"} waitUntilDone:YES];
 
-
-  // 当前线程中执行
-  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaohui"}];
-  [self performSelector:@selector(network:) withObject:@{@"name":@"moxiaoyan"} withObject:@{@"name":@"moxiaohui"}];
   // cancel 某一个方法
   [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(afterDelay:) object:@{@"name":@"moxiaoyan"}];
   // cancel 当前对象所有perform方法
   [NSObject cancelPreviousPerformRequestsWithTarget:self];
   
-  // 多次点击, 只执行最后一次
-  [self clickAction];
-  [self clickAction];
-  [self clickAction];
-  [self clickAction];
-}
-
-- (void)clickAction {
-  [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(afterDelay:) object:nil];
-  [self performSelector:@selector(afterDelay:) withObject:nil afterDelay:2]; // 2s后执行
+  // 参考：https://blog.csdn.net/jingqiu880905/article/details/82900512
 }
 
 - (void)afterDelay:(NSDictionary *)info {
@@ -149,20 +151,49 @@
   NSLog(@"完成");
 }
 
+//performSelector: withObject: afterDelay:
+//1. 在子线程中不work：
+//因为默认是在当前RunLoop中添加计时器延时执行，而子线程的RunLoop默认不开启，因此不work
+//2. 会让当前函数后面的代码先执行：
+//因为该方法是异步的，会先入栈，等线程空闲了才执行
+//3. runloop run方法后代码不执行：
+//解决方法1：在执行完任务后需要用CF框架的方法结束当前loop
+//解决方法2：用runUntilDate方法，在后续时间结束当前loop
+#pragma mark - afterDelayNowork
 - (void)afterDelayNowork {
-  NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];
-  [thread start];
+  // 模拟子线程里执行 afterDelay 方法
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSLog(@"1");
+    // 解决不执行 方法1
+    [self performSelector:@selector(complete) withObject:nil afterDelay:0]; // 异步
+    NSLog(@"2");
+    // 在子线程里获取一下runloop
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop]; // 捕获取就不会主动创建
+    // 解决后面代码不执行 方法1.1
+    [runLoop run]; // 如果直接用run，在执行完任务后需要用CF框架的方法结束当前loop
+    // 解决后面代码不执行 方法2
+    // [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    NSLog(@"3"); // 在loop结束之后才执行
+  });
 }
-- (void)run {
-  [self performSelector:@selector(complete) withObject:nil afterDelay:2];
-  // 子线程不会自动创建RunLoop，导致定时器没有工作
-  // 在子线程里启动runloop
-  NSRunLoop *runLoop = [NSRunLoop currentRunLoop]; // 捕获取就不会主动创建
-  [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
-  [runLoop run];
-}
+
 - (void)complete {
-  NSLog(@"Update UI");
+  NSLog(@"4");
+  // 解决后面代码不执行 方法1.2
+  CFRunLoopStop(CFRunLoopGetCurrent()); // 需要手动管理`为子线程创建的RunLoop`的生命周期
+}
+
+#pragma mark - testClickAction
+- (void)testClickAction {
+  // 实现：多次点击, 只执行最后一次
+  [self clickAction];
+  [self clickAction];
+  [self clickAction];
+  [self clickAction];
+}
+- (void)clickAction {
+  [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(afterDelay:) object:nil];
+  [self performSelector:@selector(afterDelay:) withObject:nil afterDelay:2]; // 2s后执行
 }
 
 @end
